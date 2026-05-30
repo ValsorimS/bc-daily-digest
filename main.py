@@ -35,6 +35,11 @@ for blog in data.get('blogs', []):
 
 # Uložení do _posts
 date_str = datetime.now().strftime("%Y-%m-%d")
+filename = f"_posts/{date_str}-bc-novinky.md"
 os.makedirs("_posts", exist_ok=True)
-with open(f"_posts/{date_str}-bc-novinky.md", "w", encoding="utf-8") as f:
-    f.write(f"---\nlayout: post\ntitle: \"BC novinky {date_str}\"\n---\n\n" + content)
+
+# Upravená hlavička (přidali jsme 'published: true')
+header = f"---\nlayout: post\ntitle: \"BC novinky {date_str}\"\npublished: true\n---\n\n"
+
+with open(filename, "w", encoding="utf-8") as f:
+    f.write(header + content)
