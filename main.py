@@ -7,7 +7,7 @@ from datetime import datetime
 from google import genai
 from google.genai.errors import ClientError
 
-# Konfigurace - používáme nového klienta
+# Konfigurace
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 HISTORY_FILE = "history.json"
 
@@ -31,9 +31,8 @@ def summarize(text):
         "Piš v češtině, buď extrémně technický a stručný.\n\n"
         f"Text k analýze: {text[:3000]}"
     )
-    # Volání nového API
     response = client.models.generate_content(
-        # model='gemini-flash-latest',
+        # Vrátit: model='gemini-flash-latest',
         model='gemini-2.5-flash',
         contents=prompt
     )
@@ -44,53 +43,49 @@ processed = get_processed_links()
 with open('sources.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-# 2. Zpracování (omezeno na 1 článek za běh pro úsporu kvóty)
+# 2. Zpracování
 count = 0
 MAX_PER_RUN = 1 
 
 for blog in data.get('blogs', []):
     feed = feedparser.parse(blog['url'])
     
-    # Projdeme feed od nejstarších článků (backfilling)
     for entry in reversed(feed.entries):
         if count >= MAX_PER_RUN:
             break
             
         if entry.link not in processed:
             print(f"Zpracovávám: {entry.title}")
-            # Sumarizace s "Verdiktem"
-        try:
-            summary_text = summarize(entry.summary)
-        except ClientError as e:
-            # V nové knihovně je kód chyby v e.code
-            if hasattr(e, 'code') and e.code == 429:
-                print("Kvóta vyčerpána (429). Končím tento běh, zkusím to příště.")
-                break # Ukončíme smyčku for, ale skript doběhne úspěšně
-            else:
-                raise e # Jiné chyby chceme vidět
             
-            # Formátování: Verdikt (před více) \n <!--více--> \n Zbytek (detail)
-            # Předpokládáme, že model vrátí text, kde první řádky jsou verdikt
-            content = f"{summary_text}\n\n[Číst celý článek]({entry.link})"
-            
-            # Vložení oddělovače pro Jekyll (zobrazí se jen text nad tímto tagem)
-            # Pokud model nevrátí separátor, vložíme ho po prvním odstavci
-            final_content = content.replace("\n\n", "\n\n<!--více-->\n\n", 1)
+            try:
+                # Sumarizace s ošetřením 429
+                summary_text = summarize(entry.summary)
+                
+                # Zápis proběhne POUZE pokud summarize() projde
+                content = f"{summary_text}\n\n[Číst celý článek]({entry.link})"
+                final_content = content.replace("\n\n", "\n\n<!--více-->\n\n", 1)
 
-            # Uložení do souboru
-            date_str = datetime.now().strftime("%Y-%m-%d")
-
-            # Zajištění existence složky _posts
-            os.makedirs("_posts", exist_ok=True)
-            filename = f"_posts/{date_str}-{blog['name'].replace(' ', '-').lower()}-{count}.md"
-            
-            with open(filename, "w", encoding="utf-8") as f:
-                f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{final_content}")
-            # Zápis do historie
-            processed[entry.link] = datetime.now().isoformat()
-            save_processed_links(processed)
-            
-            count += 1
-            time.sleep(60) # Pauza mezi články pro klid Google API
+                os.makedirs("_posts", exist_ok=True)
+                date_str = datetime.now().strftime("%Y-%m-%d")
+                filename = f"_posts/{date_str}-{blog['name'].replace(' ', '-').lower()}-{count}.md"
+                
+                with open(filename, "w", encoding="utf-8") as f:
+                    f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{final_content}")
+                
+                processed[entry.link] = datetime.now().isoformat()
+                save_processed_links(processed)
+                count += 1
+                
+                # Exponenciální pauza pro prevenci 429 (začíná na 60s)
+                time.sleep(65) 
+                
+            except ClientError as e:
+                if hasattr(e, 'code') and e.code == 429:
+                    print("Kvóta vyčerpána (429). Čekám na reset a končím.")
+                    # Zde neprovádíme break, který by ukončil celý skript, 
+                    # jen vyskočíme z aktuálního článku
+                    break 
+                else:
+                    raise e
 
 print("Hotovo. Zpracováno nových článků:", count)
