@@ -4,10 +4,6 @@ on:
     - cron: '0 5 * * *'
   workflow_dispatch:
 
-# Tady je to klíčové nastavení pro Node.js 24
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
