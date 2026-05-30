@@ -3,6 +3,7 @@ import feedparser
 import google.generativeai as genai
 import os
 import time
+import google.api_core.exceptions
 from datetime import datetime
 from youtube_transcript_api import YouTubeTranscriptApi
 
@@ -10,15 +11,16 @@ genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 model = genai.GenerativeModel('gemini-2.0-flash')
 
 def summarize(text):
-    # Pokusíme se o sumarizaci 3x, pokud to selže
-    for attempt in range(3):
+    for attempt in range(3): # Zkusí to 3x
         try:
-            return model.generate_content(text[:5000]).text
+            # Pošleme jen kousek textu, abychom šetřili tokeny
+            return model.generate_content(text[:4000]).text
+        except google.api_core.exceptions.ResourceExhausted:
+            print(f"Kvóta vyčerpána, čekám 60 sekund... (pokus {attempt+1})")
+            time.sleep(60) # Čekání 1 minuta mezi pokusy
         except Exception as e:
-            if "429" in str(e):
-                time.sleep(25)  # Počkej 25 sekund, pokud je limit vyčerpán
-            else:
-                raise e
+            print(f"Chyba: {e}")
+            break
     return "Nepodařilo se shrnout (kvóta vyčerpána)."
 
 # Hlavní logika
