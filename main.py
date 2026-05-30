@@ -1,13 +1,13 @@
 import json
 import feedparser
-import google.generativeai as genai
 import os
 import time
 from datetime import datetime
 
-# Konfigurace
-genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel('gemini-flash-latest')
+from google import genai
+
+# Konfigurace - používáme nového klienta
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 HISTORY_FILE = "history.json"
 
 def get_processed_links():
@@ -30,7 +30,12 @@ def summarize(text):
         "Piš v češtině, buď extrémně technický a stručný.\n\n"
         f"Text k analýze: {text[:3000]}"
     )
-    return model.generate_content(prompt).text
+    # Volání nového API
+    response = client.models.generate_content(
+        model='gemini-2.0-flash',
+        contents=prompt
+    )
+    return response.text
 
 # 1. Načtení historie a zdrojů
 processed = get_processed_links()
