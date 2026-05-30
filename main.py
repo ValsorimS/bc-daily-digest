@@ -8,7 +8,7 @@ from datetime import datetime
 from youtube_transcript_api import YouTubeTranscriptApi
 
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel('gemini-3.5-flash')
+model = genai.GenerativeModel('gemini-flash')
 
 def summarize(text):
     for attempt in range(3): # Zkusí to 3x
