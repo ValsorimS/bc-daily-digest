@@ -64,6 +64,9 @@ for blog in data.get('blogs', []):
 
             # Uložení do souboru
             date_str = datetime.now().strftime("%Y-%m-%d")
+
+            # Zajištění existence složky _posts
+            os.makedirs("_posts", exist_ok=True)
             filename = f"_posts/{date_str}-{blog['name'].replace(' ', '-').lower()}-{count}.md"
             
             with open(filename, "w", encoding="utf-8") as f:
