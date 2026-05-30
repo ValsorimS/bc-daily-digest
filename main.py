@@ -2,46 +2,48 @@ import json
 import feedparser
 import google.generativeai as genai
 import os
-import time
-import google.api_core.exceptions
+import random
 from datetime import datetime
-from youtube_transcript_api import YouTubeTranscriptApi
 
+# Konfigurace
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel('gemini-flash')
+# Alias 'gemini-flash-latest' zajistí vždy nejnovější dostupnou verzi
+model = genai.GenerativeModel('gemini-flash-latest')
 
 def summarize(text):
-    for attempt in range(3): # Zkusí to 3x
-        try:
-            # Pošleme jen kousek textu, abychom šetřili tokeny
-            return model.generate_content(text[:4000]).text
-        except google.api_core.exceptions.ResourceExhausted:
-            print(f"Kvóta vyčerpána, čekám 60 sekund... (pokus {attempt+1})")
-            time.sleep(60) # Čekání 1 minuta mezi pokusy
-        except Exception as e:
-            print(f"Chyba: {e}")
-            break
-    return "Nepodařilo se shrnout (kvóta vyčerpána)."
+    # Definice persony v promptu
+    prompt = (
+        "Jsi expert na Microsoft Dynamics 365 Business Central a AL programování. "
+        "Tvým úkolem je shrnout tento text pro zkušeného BC vývojáře. "
+        "Zaměř se primárně na technické novinky v AL, Business Central a na to, "
+        "jak dané téma souvisí s trendem AI agentů a moderním programováním. "
+        "Buď maximálně technický, stručný a piš v češtině. "
+        "Výstup dej do 3 krátkých odrážek.\n\n"
+        f"Text k analýze: {text[:3000]}"
+    )
+    response = model.generate_content(prompt)
+    return response.text
 
-# Hlavní logika
+# Načtení dat
 with open('sources.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-content = "# Denní přehled BC novinek\n\n"
+# Výběr jednoho náhodného blogu pro šetření kvóty
+blog = random.choice(data.get('blogs', []))
+feed = feedparser.parse(blog['url'])
 
-for blog in data.get('blogs', []):
-    feed = feedparser.parse(blog['url'])
-    if feed.entries:
-        entry = feed.entries[0]
-        content += f"## {entry.title}\n{summarize(entry.summary)}\n\n[Číst celý článek]({entry.link})\n\n"
+if feed.entries:
+    entry = feed.entries[0]
+    
+    # Samotná sumarizace (bez try-except, pokud spadne, build skončí chybou a uvidíte proč)
+    summary_text = summarize(entry.summary)
+    
+    content = f"# {entry.title}\n\n{summary_text}\n\n[Číst celý článek]({entry.link})"
 
-# Uložení do _posts
-date_str = datetime.now().strftime("%Y-%m-%d")
-filename = f"_posts/{date_str}-bc-novinky.md"
-os.makedirs("_posts", exist_ok=True)
-
-# Upravená hlavička (přidali jsme 'published: true')
-header = f"---\nlayout: post\ntitle: \"BC novinky {date_str}\"\npublished: true\n---\n\n"
-
-with open(filename, "w", encoding="utf-8") as f:
-    f.write(header + content)
+    # Uložení do souboru
+    date_str = datetime.now().strftime("%Y-%m-%d-%H%M")
+    os.makedirs("_posts", exist_ok=True)
+    filename = f"_posts/{date_str}-bc-novinky.md"
+    
+    with open(filename, "w", encoding="utf-8") as f:
+        f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n" + content)
