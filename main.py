@@ -44,9 +44,9 @@ processed = get_processed_links()
 with open('sources.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-# 2. Zpracování (omezeno na 3 články za běh pro úsporu kvóty)
+# 2. Zpracování (omezeno na 1 článek za běh pro úsporu kvóty)
 count = 0
-MAX_PER_RUN = 3 
+MAX_PER_RUN = 1 
 
 for blog in data.get('blogs', []):
     feed = feedparser.parse(blog['url'])
