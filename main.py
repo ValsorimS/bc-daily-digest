@@ -54,13 +54,13 @@ for blog in data.get('blogs', []):
             # Sumarizace s "Verdiktem"
             summary_text = summarize(entry.summary)
             
-            # Formátování: Verdikt (před more) \n <!--more--> \n Zbytek (detail)
+            # Formátování: Verdikt (před více) \n <!--více--> \n Zbytek (detail)
             # Předpokládáme, že model vrátí text, kde první řádky jsou verdikt
             content = f"{summary_text}\n\n[Číst celý článek]({entry.link})"
             
             # Vložení oddělovače pro Jekyll (zobrazí se jen text nad tímto tagem)
             # Pokud model nevrátí separátor, vložíme ho po prvním odstavci
-            final_content = content.replace("\n\n", "\n\n<!--more-->\n\n", 1)
+            final_content = content.replace("\n\n", "\n\n<!--více-->\n\n", 1)
 
             # Uložení do souboru
             date_str = datetime.now().strftime("%Y-%m-%d")
