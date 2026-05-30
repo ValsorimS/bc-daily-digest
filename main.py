@@ -22,10 +22,12 @@ def save_processed_links(data):
 
 def summarize(text):
     prompt = (
-        "Jsi expert na MS Dynamics 365 Business Central a AL programování. "
+        "Jsi expert na MS Dynamics 365 Business Central a AL. "
         "Shrň technické novinky pro zkušeného BC vývojáře. Zaměř se na AL, AI agenty a trendy. "
-        "Buď maximálně technický, stručný a piš v češtině. "
-        "Výstup dej do 3 krátkých odrážek.\n\n"
+        "Analizuj text a napiš výstup v tomto formátu:\n"
+        "1. První odstavec: Verdikt (ANO/NE) - shrň jednou větou, jestli má smysl článek číst.\n"
+        "2. Následuje technické shrnutí ve 3 odrážkách (co je nového, technické detaily).\n"
+        "Piš v češtině, buď extrémně technický a stručný.\n\n"
         f"Text k analýze: {text[:3000]}"
     )
     return model.generate_content(prompt).text
@@ -49,15 +51,23 @@ for blog in data.get('blogs', []):
             
         if entry.link not in processed:
             print(f"Zpracovávám: {entry.title}")
-            summary = summarize(entry.summary)
+            # Sumarizace s "Verdiktem"
+            summary_text = summarize(entry.summary)
             
-            # Uložení příspěvku
+            # Formátování: Verdikt (před more) \n <!--more--> \n Zbytek (detail)
+            # Předpokládáme, že model vrátí text, kde první řádky jsou verdikt
+            content = f"{summary_text}\n\n[Číst celý článek]({entry.link})"
+            
+            # Vložení oddělovače pro Jekyll (zobrazí se jen text nad tímto tagem)
+            # Pokud model nevrátí separátor, vložíme ho po prvním odstavci
+            final_content = content.replace("\n\n", "\n\n<!--more-->\n\n", 1)
+
+            # Uložení do souboru
             date_str = datetime.now().strftime("%Y-%m-%d")
             filename = f"_posts/{date_str}-{blog['name'].replace(' ', '-').lower()}-{count}.md"
             
             with open(filename, "w", encoding="utf-8") as f:
-                f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{summary}\n\n[Číst celý článek]({entry.link})")
-            
+                f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{final_content}")
             # Zápis do historie
             processed[entry.link] = datetime.now().isoformat()
             save_processed_links(processed)
