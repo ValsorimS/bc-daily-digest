@@ -43,9 +43,9 @@ processed = get_processed_links()
 with open('sources.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-# 2. Zpracování (omezeno na 5 článků za běh pro úsporu kvóty)
+# 2. Zpracování (omezeno na 3 články za běh pro úsporu kvóty)
 count = 0
-MAX_PER_RUN = 5 
+MAX_PER_RUN = 3 
 
 for blog in data.get('blogs', []):
     feed = feedparser.parse(blog['url'])
@@ -60,13 +60,13 @@ for blog in data.get('blogs', []):
             # Sumarizace s "Verdiktem"
         try:
             summary_text = summarize(entry.summary)
-        except ClientError as e:
-            if e.status_code == 429:
-                print("Kvóta vyčerpána, končím a zkusím to příště.")
-                # Uložíme vše, co jsme zatím stihli, a ukončíme skript bez chyby
-                break 
-            else:
-                raise e
+            except ClientError as e:
+                # V nové knihovně je kód chyby v e.code
+                if hasattr(e, 'code') and e.code == 429:
+                    print("Kvóta vyčerpána (429). Končím tento běh, zkusím to příště.")
+                    break # Ukončíme smyčku for, ale skript doběhne úspěšně
+                else:
+                    raise e # Jiné chyby chceme vidět
             
             # Formátování: Verdikt (před více) \n <!--více--> \n Zbytek (detail)
             # Předpokládáme, že model vrátí text, kde první řádky jsou verdikt
