@@ -6,7 +6,7 @@ from datetime import datetime
 from youtube_transcript_api import YouTubeTranscriptApi
 
 genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-2.0-flash')
 
 def summarize(text):
     prompt = f"Shrň technické novinky z Business Central pro vývojáře do 5 odrážek v češtině. Text: {text[:10000]}"
