@@ -33,7 +33,8 @@ def summarize(text):
     )
     # Volání nového API
     response = client.models.generate_content(
-        model='gemini-flash-latest',
+        # model='gemini-flash-latest',
+        model='gemini-2.5-flash',
         contents=prompt
     )
     return response.text
