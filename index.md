@@ -3,7 +3,7 @@ layout: home
 title: BC Daily Digest
 ---
 
-# Přehled novinek
+# Přehled novinek ze světa programování v AL
 
 {% for post in site.posts %}
   <article>
