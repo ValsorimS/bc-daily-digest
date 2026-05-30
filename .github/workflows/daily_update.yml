@@ -28,7 +28,11 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "action@github.com"
-          git add _posts/ history.json
-          git commit -m "Update daily digest" || exit 0
-          git pull --rebase origin main  # DŮLEŽITÉ: Nejdřív stáhnout změny
-          git push origin main           # Poté teprve push
+          # Přidáme historii a případné nové posty
+          git add history.json
+          # Zkusíme přidat _posts, ale ignorujeme chybu, pokud tam nic není
+          git add _posts/ || echo "Žádné nové příspěvky"
+          # Commitneme pouze pokud existují nějaké změny
+          git commit -m "Update daily digest" || echo "Žádné změny k commitnutí"
+          git pull --rebase origin main
+          git push origin main
