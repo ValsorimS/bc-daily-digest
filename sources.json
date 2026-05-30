@@ -2,7 +2,8 @@
   "blogs": [
     {"name": "Freddy Kristiansen", "url": "https://freddysblog.com/feed/"},
     {"name": "Stefano Demiliani", "url": "https://demiliani.com/feed/"},
-    {"name": "Vjekoslav Babic", "url": "https://vjeko.com/feed/"}
+    {"name": "Vjekoslav Babic", "url": "https://vjeko.com/feed/"},
+    {"name": "VS Code Blog", "url": "https://code.visualstudio.com/feed.xml"}
   ],
   "youtube": [
     {"name": "Erik Hougaard", "channel_id": "UCU41F4U5_8yV0_8w-O3042A"}
