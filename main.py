@@ -2,6 +2,7 @@ import json
 import feedparser
 import google.generativeai as genai
 import os
+import time
 from datetime import datetime
 from youtube_transcript_api import YouTubeTranscriptApi
 
@@ -9,8 +10,16 @@ genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 model = genai.GenerativeModel('gemini-2.0-flash')
 
 def summarize(text):
-    prompt = f"Shrň technické novinky z Business Central pro vývojáře do 5 odrážek v češtině. Text: {text[:10000]}"
-    return model.generate_content(prompt).text
+    # Pokusíme se o sumarizaci 3x, pokud to selže
+    for attempt in range(3):
+        try:
+            return model.generate_content(text[:5000]).text
+        except Exception as e:
+            if "429" in str(e):
+                time.sleep(25)  # Počkej 25 sekund, pokud je limit vyčerpán
+            else:
+                raise e
+    return "Nepodařilo se shrnout (kvóta vyčerpána)."
 
 # Hlavní logika
 with open('sources.json', 'r', encoding='utf-8') as f:
