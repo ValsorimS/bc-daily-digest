@@ -60,13 +60,13 @@ for blog in data.get('blogs', []):
             # Sumarizace s "Verdiktem"
         try:
             summary_text = summarize(entry.summary)
-            except ClientError as e:
-                # V nové knihovně je kód chyby v e.code
-                if hasattr(e, 'code') and e.code == 429:
-                    print("Kvóta vyčerpána (429). Končím tento běh, zkusím to příště.")
-                    break # Ukončíme smyčku for, ale skript doběhne úspěšně
-                else:
-                    raise e # Jiné chyby chceme vidět
+        except ClientError as e:
+            # V nové knihovně je kód chyby v e.code
+            if hasattr(e, 'code') and e.code == 429:
+                print("Kvóta vyčerpána (429). Končím tento běh, zkusím to příště.")
+                break # Ukončíme smyčku for, ale skript doběhne úspěšně
+            else:
+                raise e # Jiné chyby chceme vidět
             
             # Formátování: Verdikt (před více) \n <!--více--> \n Zbytek (detail)
             # Předpokládáme, že model vrátí text, kde první řádky jsou verdikt
