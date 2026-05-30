@@ -5,6 +5,7 @@ import time
 from datetime import datetime
 
 from google import genai
+from google.genai.errors import ClientError
 
 # Konfigurace - používáme nového klienta
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
@@ -57,7 +58,15 @@ for blog in data.get('blogs', []):
         if entry.link not in processed:
             print(f"Zpracovávám: {entry.title}")
             # Sumarizace s "Verdiktem"
+        try:
             summary_text = summarize(entry.summary)
+        except ClientError as e:
+            if e.status_code == 429:
+                print("Kvóta vyčerpána, končím a zkusím to příště.")
+                # Uložíme vše, co jsme zatím stihli, a ukončíme skript bez chyby
+                break 
+            else:
+                raise e
             
             # Formátování: Verdikt (před více) \n <!--více--> \n Zbytek (detail)
             # Předpokládáme, že model vrátí text, kde první řádky jsou verdikt
