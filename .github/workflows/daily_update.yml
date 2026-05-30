@@ -26,8 +26,9 @@ jobs:
         run: python main.py
       - name: Commit and push
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add _posts/
+          git config user.name "github-actions"
+          git config user.email "action@github.com"
+          git add _posts/ history.json
           git commit -m "Update daily digest" || exit 0
-          git push
+          git pull --rebase origin main  # DŮLEŽITÉ: Nejdřív stáhnout změny
+          git push origin main           # Poté teprve push
