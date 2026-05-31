@@ -50,7 +50,7 @@ MAX_PER_RUN = 1
 for blog in data.get('blogs', []):
     feed = feedparser.parse(blog['url'])
     
-    for entry in reversed(feed.entries):
+    for entry in feed.entries:
         if count >= MAX_PER_RUN:
             break
             
