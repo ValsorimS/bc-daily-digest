@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Freddy Kristiansen: Automatic AppSource Submission of Business Central apps"
+title: "Freddy Kristiansen: Working with AL-Go for GitHub preview"
 published: true
 ---
 
-1.  **Verdikt:** ANO – Článek je relevantní pro zkušeného BC vývojáře, který se zabývá publikováním aplikací na AppSource.
-2.  *   Nově je možné automatizovat proces submitování AL aplikací do AppSource Validation.
-    *   Technicky je to umožněno díky **Ingestion API** v Partner Center, které podporuje všechny typy nabídek na AppSource a lze jej využít pro programatické odesílání aktualizací.
-    *   Tento trend směřuje k plné integraci AppSource publikace do DevOps pipeline, což umožňuje CI/CD pro AL extensions a efektivnější release management.
+1. Verdikt: ANO, pokud aktivně spravujete CI/CD pro Business Central pomocí AL-Go for GitHub a požadujete přístup k pre-release funkcím a aktualizacím pipeline.
 
-<!--více-->
+2. Technické shrnutí:
+    *   AL-Go for GitHub nově umožňuje vývojářům získávat *pre-release* aktualizace a funkce pro CI/CD pipeline, čímž zajišťuje včasný přístup k nejnovějším nástrojům a opravám před oficiálním vydáním.
+    *   Pro implementaci pre-release aktualizací je nutné aktualizovat stávající Git repozitář nebo založit nový s použitím specifických preview template repozitářů.
+    *   Dostupné preview template URI jsou `https://github.com/microsoft/al-go-pte@preview` pro scénáře Private Tenant Extension (PTE) a `https://github.com/microsoft/al-go-appsource@preview` pro aplikace cílené na Microsoft AppSource.
 
-[Číst celý článek](https://freddysblog.com/2022/09/22/automatic-appsource-submission-of-business-central-apps/)
+[Číst celý článek](https://freddysblog.com/2022/06/27/working-with-al-go-for-github-preview/)
