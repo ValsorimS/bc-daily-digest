@@ -27,6 +27,7 @@ def summarize(text):
         "Shrň technické novinky pro zkušeného BC vývojáře. Zaměř se na AL, AI agenty a trendy. "
         "Analizuj text a napiš výstup v tomto formátu:\n"
         "1. První odstavec: Verdikt (ANO/NE) - shrň jednou větou, jestli má smysl článek číst.\n"
+        "\n\n<!--více-->\n\n"
         "2. Následuje technické shrnutí ve 3 odrážkách (co je nového, technické detaily).\n"
         "Piš v češtině, buď extrémně technický a stručný.\n\n"
         f"Text k analýze: {text[:3000]}"
@@ -63,14 +64,14 @@ for blog in data.get('blogs', []):
                 
                 # Zápis proběhne POUZE pokud summarize() projde
                 content = f"{summary_text}\n\n[Číst celý článek]({entry.link})"
-                final_content = content.replace("\n\n", "\n\n<!--více-->\n\n", 1)
+                # final_content = content.replace("\n\n", "\n\n<!--více-->\n\n", 1)
 
                 os.makedirs("_posts", exist_ok=True)
                 date_str = datetime.now().strftime("%Y-%m-%d")
                 filename = f"_posts/{date_str}-{blog['name'].replace(' ', '-').lower()}-{count}.md"
                 
                 with open(filename, "w", encoding="utf-8") as f:
-                    f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{final_content}")
+                    f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{content}")
                 
                 processed[entry.link] = datetime.now().isoformat()
                 save_processed_links(processed)
