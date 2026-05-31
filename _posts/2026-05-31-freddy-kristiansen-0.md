@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Freddy Kristiansen: Invoke-ScriptInBcContainer"
+title: "Freddy Kristiansen: Major improvement when invoking scripts in Containers…"
 published: true
 ---
 
-1.  **Verdikt:** NE, protože se článek zaměřuje na specifické, zastaralé změny ve funkci `Invoke-ScriptInBcContainer` v `BcContainerHelper` z roku 2022 a neobsahuje informace o AL, AI agentech nebo aktuálních trendech v Business Central.
+1.  **Verdikt:** NE. Tento úryvek textu popisuje řešení problému z roku 2022 týkající se Azure DevOps pipeline a kontejnerů, což pro zkušeného BC vývojáře hledajícího aktuální *novinky* v AL, AI agentech či trendy *není* relevantní.
 
 2.  **Technické shrnutí:**
-    *   Funkce `Invoke-ScriptInBcContainer` v PowerShell modulu `BcContainerHelper` prošla zásadními změnami ve verzi 3.0.9 (vydané v květnu 2022).
-    *   Tato funkce umožňuje spouštění libovolných PowerShell `scriptblock`ů přímo uvnitř zadaného Business Central Docker kontejneru, s parametry jako `containerName` a `scriptblock`.
-    *   Zásadní změny vyžadují revizi stávajících automatizačních skriptů a CI/CD pipeline, které tuto funkci využívají, s cílem zajistit kompatibilitu a optimalizovat workflow pro práci s kontejnery.
+    *   Řeší dřívější problémy (před 2022) s nestabilitou Azure DevOps build pipeline, zejména při spouštění více DevOps agentů na stejném hostiteli využívajícím kontejnery s procesní izolací.
+    *   Zmiňuje "major improvement" v mechanismu invokace skriptů uvnitř těchto kontejnerů, což naznačuje optimalizaci runtime prostředí pro vykonávání build steps.
+    *   Implikuje zvýšení robustnosti a spolehlivosti CI/CD infrastruktury pro Business Central AL extensions, kde jsou AL kompilace a testy často spouštěny v containerizovaných prostředích.
 
-[Číst celý článek](https://freddysblog.com/2022/05/24/invoke-scriptinbccontainer/)
+[Číst celý článek](https://freddysblog.com/2022/05/19/major-improvement-when-invoking-scripts-in-containers/)
