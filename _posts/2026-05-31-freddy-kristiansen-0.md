@@ -1,15 +1,14 @@
 ---
 layout: post
-title: "Freddy Kristiansen: All good things come to an end"
+title: "Freddy Kristiansen: Automatic AppSource Submission of Business Central apps"
 published: true
 ---
 
-1.  **Verdikt: NE** - Článek neobsahuje žádné technické novinky ohledně AL, AI agentů nebo trendů v Business Central, jedná se o osobní oznámení.
-2.  Technické shrnutí:
-    *   **Absence AL-specifických novinek:** Článek neprezentuje žádné aktualizace syntaxe AL, nové objekty, Event Subscriber API rozšíření, ani vylepšení vývojového prostředí pro AL.
-    *   **Žádné detaily o AI agentech:** Nebyly zmíněny žádné Copilot integrace, nativní AI agenty v Business Central, ani API pro interakci s modely strojového učení nebo generativní AI.
-    *   **Chybějící analýza technických trendů:** Není diskutována žádná predikce budoucího vývoje platformy Business Central, optimalizace výkonu, ani architektonické změny relevantní pro AL vývojáře.
+1.  **Verdikt:** ANO – Článek je relevantní pro zkušeného BC vývojáře, který se zabývá publikováním aplikací na AppSource.
+2.  *   Nově je možné automatizovat proces submitování AL aplikací do AppSource Validation.
+    *   Technicky je to umožněno díky **Ingestion API** v Partner Center, které podporuje všechny typy nabídek na AppSource a lze jej využít pro programatické odesílání aktualizací.
+    *   Tento trend směřuje k plné integraci AppSource publikace do DevOps pipeline, což umožňuje CI/CD pro AL extensions a efektivnější release management.
 
 <!--více-->
 
-[Číst celý článek](https://freddysblog.com/2025/05/28/all-good-things-come-to-an-end/)
+[Číst celý článek](https://freddysblog.com/2022/09/22/automatic-appsource-submission-of-business-central-apps/)
