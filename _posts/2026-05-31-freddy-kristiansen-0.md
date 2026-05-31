@@ -1,14 +1,14 @@
 ---
 layout: post
-title: "Freddy Kristiansen: Working with AL-Go for GitHub preview"
+title: "Freddy Kristiansen: Invoke-ScriptInBcContainer"
 published: true
 ---
 
-1. Verdikt: ANO, pokud aktivně spravujete CI/CD pro Business Central pomocí AL-Go for GitHub a požadujete přístup k pre-release funkcím a aktualizacím pipeline.
+1.  **Verdikt:** NE, protože se článek zaměřuje na specifické, zastaralé změny ve funkci `Invoke-ScriptInBcContainer` v `BcContainerHelper` z roku 2022 a neobsahuje informace o AL, AI agentech nebo aktuálních trendech v Business Central.
 
-2. Technické shrnutí:
-    *   AL-Go for GitHub nově umožňuje vývojářům získávat *pre-release* aktualizace a funkce pro CI/CD pipeline, čímž zajišťuje včasný přístup k nejnovějším nástrojům a opravám před oficiálním vydáním.
-    *   Pro implementaci pre-release aktualizací je nutné aktualizovat stávající Git repozitář nebo založit nový s použitím specifických preview template repozitářů.
-    *   Dostupné preview template URI jsou `https://github.com/microsoft/al-go-pte@preview` pro scénáře Private Tenant Extension (PTE) a `https://github.com/microsoft/al-go-appsource@preview` pro aplikace cílené na Microsoft AppSource.
+2.  **Technické shrnutí:**
+    *   Funkce `Invoke-ScriptInBcContainer` v PowerShell modulu `BcContainerHelper` prošla zásadními změnami ve verzi 3.0.9 (vydané v květnu 2022).
+    *   Tato funkce umožňuje spouštění libovolných PowerShell `scriptblock`ů přímo uvnitř zadaného Business Central Docker kontejneru, s parametry jako `containerName` a `scriptblock`.
+    *   Zásadní změny vyžadují revizi stávajících automatizačních skriptů a CI/CD pipeline, které tuto funkci využívají, s cílem zajistit kompatibilitu a optimalizovat workflow pro práci s kontejnery.
 
-[Číst celý článek](https://freddysblog.com/2022/06/27/working-with-al-go-for-github-preview/)
+[Číst celý článek](https://freddysblog.com/2022/05/24/invoke-scriptinbccontainer/)
