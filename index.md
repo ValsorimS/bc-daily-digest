@@ -9,5 +9,10 @@ title: BC Daily Digest
   <article>
     <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
     <p>{{ post.date | date: "%d. %m. %Y" }}</p>
+    
+    <div class="excerpt">
+      {{ post.excerpt }}
+    </div>
+    <a href="{{ site.baseurl }}{{ post.url }}">Číst dále...</a>
   </article>
 {% endfor %}
