@@ -42,10 +42,11 @@ def summarize(text):
     prompt = (
         "Jsi expert na MS Dynamics 365 Business Central a AL. "
         "Shrň technické novinky pro zkušeného BC vývojáře. Zaměř se na AL, AI agenty a trendy. "
-        "Analizuj text a napiš výstup v tomto formátu:\n"
-        "1. První odstavec: Verdikt (ANO/NE) - shrň jednou větou, jestli má smysl článek číst.\n"
-        "2. Následuje technické shrnutí ve 3 odrážkách (co je nového, technické detaily).\n"
-        "Piš v češtině, buď extrémně technický a stručný.\n\n"
+        "Analizuj text a napiš výstup přesně takto:\n"
+        "- První řádek začni slovem 'Verdikt:' a hned ANO nebo NE, pak jednou "
+        "větou shrň, jestli má smysl článek číst. Příklad: 'Verdikt: NE – ...'.\n"
+        "- Pak následuje technické shrnutí ve 3 odrážkách (co je nového, technické detaily).\n"
+        "Odstavce ani odrážky nečísluj. Piš v češtině, buď extrémně technický a stručný.\n\n"
         f"Text k analýze: {text[:3000]}"
     )
     # Modely zkoušíme v pořadí podle MODELS. U každého pár pokusů
@@ -156,6 +157,10 @@ for cand in candidates:
         # Shrnutí (rest) je za <!--více-->, není v excerptu a "2." tam drží
         # odsazení vnořených odrážek, proto ho necháváme být.
         verdict = re.sub(r'^\s*\d+[.)]\s*', '', verdict)
+        # Doplníme prefix "Verdikt:", když ho model vynechal – jinak by se
+        # na úvodní stránce nezobrazil odznak ANO/NE (odvozuje se z "Verdikt:").
+        if not re.search(r'verdikt', verdict, re.IGNORECASE):
+            verdict = f"**Verdikt:** {verdict}"
         rest = parts[1].strip() if len(parts) > 1 else ""
 
         # Verdikt = excerpt (úvodní stránka), zbytek + odkaz až za oddělovačem
