@@ -25,9 +25,11 @@ import feedparser
 
 SOURCES_FILE = "sources.json"
 YOUTUBE_RSS = "https://www.youtube.com/feeds/videos.xml?channel_id={}"
+# Browser-like UA – některé weby (Cloudflare apod.) blokují "robotí" UA
+# a vrací 403 (např. waldo.be). S tímto UA feedy projdou.
 USER_AGENT = (
-    "Mozilla/5.0 (compatible; bc-daily-digest/1.0; "
-    "+https://github.com/ValsorimS/bc-daily-digest)"
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
 )
 
 
@@ -88,7 +90,7 @@ class _FeedLinkParser(HTMLParser):
 def discover_feed(url):
     """Vrátí URL feedu – buď přímo zadanou (když už je to feed), nebo objevenou."""
     # 1) Je zadaná URL rovnou feed?
-    parsed = feedparser.parse(url)
+    parsed = feedparser.parse(url, agent=USER_AGENT)
     if parsed.entries:
         return url
 
@@ -108,7 +110,7 @@ def discover_feed(url):
 
 def add_blog(url, name=None):
     feed_url = discover_feed(url)
-    parsed = feedparser.parse(feed_url)
+    parsed = feedparser.parse(feed_url, agent=USER_AGENT)
     if not parsed.entries:
         sys.exit(f"Feed {feed_url} nejde parsovat nebo je prázdný.")
 
@@ -146,7 +148,7 @@ def resolve_channel_id(url):
 
 def add_youtube(url, name=None):
     channel_id = resolve_channel_id(url)
-    parsed = feedparser.parse(YOUTUBE_RSS.format(channel_id))
+    parsed = feedparser.parse(YOUTUBE_RSS.format(channel_id), agent=USER_AGENT)
     if not name:
         name = (parsed.feed.get("title") or "").strip() or channel_id
 

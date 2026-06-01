@@ -12,6 +12,13 @@ from google.genai.errors import ClientError, ServerError
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 HISTORY_FILE = "history.json"
 
+# Browser-like UA – některé weby (Cloudflare apod.) blokují "robotí" UA
+# a vrací 403 (např. waldo.be), takže by feed nevracel žádné články.
+FEED_USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+)
+
 # Modely od preferovaného po záložní. Když je některý dočasně nedostupný
 # (503) nebo neexistuje (404), zkusí se další v pořadí.
 MODELS = [
@@ -94,7 +101,7 @@ with open('sources.json', 'r', encoding='utf-8') as f:
 # pozici 0 (a tedy přeskočí starší články ostatních zdrojů).
 candidates = []
 for blog in data.get('blogs', []):
-    feed = feedparser.parse(blog['url'])
+    feed = feedparser.parse(blog['url'], agent=FEED_USER_AGENT)
 
     for index, entry in enumerate(feed.entries):
         if entry.link in processed:
