@@ -6,19 +6,20 @@ title: BC Daily Digest
 # Přehled novinek ze světa programování v AL
 
 {%- comment -%}
-Hranice "nového" článku: původní článek z posledních 30 dní (30*24*3600 s).
-Sekce se řadí podle data zpracování (pořadí site.posts), jen se rozdělí
-na nové a archivní, aby čerstvý obsah nezapadl mezi dozpracovaný archiv.
+Řadíme podle data PUBLIKACE článku (original_date) sestupně – nejnovější
+obsah nahoře. Hranice "nového" článku: původní článek z posledních 30 dní
+(30*24*3600 s); starší jdou do sbaleného archivu.
 Pozor: HTML níže musí být na sloupci 0 – odsazení o 4+ mezery by kramdown
 vykreslil jako blok kódu místo HTML.
 {%- endcomment -%}
 {% assign now_ts = 'now' | date: '%s' | plus: 0 %}
 {% assign cutoff_ts = now_ts | minus: 2592000 %}
+{% assign sorted = site.posts | sort: 'original_date' | reverse %}
 
 ## Nové články
 
 {% assign found_new = false -%}
-{% for post in site.posts -%}
+{% for post in sorted -%}
 {%- assign is_new = false -%}
 {%- if post.original_date -%}
 {%- assign ots = post.original_date | date: '%s' | plus: 0 -%}
@@ -38,7 +39,7 @@ vykreslil jako blok kódu místo HTML.
 
 <details class="archive">
 <summary>Z archivu</summary>
-{% for post in site.posts -%}
+{% for post in sorted -%}
 {%- assign is_new = false -%}
 {%- if post.original_date -%}
 {%- assign ots = post.original_date | date: '%s' | plus: 0 -%}
