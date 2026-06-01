@@ -1,15 +1,14 @@
 ---
 layout: post
-title: "Freddy Kristiansen: Secrets in AL-Go for GitHub"
+title: "Freddy Kristiansen: Resilience"
 published: true
 ---
 
-1.  **Verdikt:** NE – Článek z roku 2022 se zaměřuje na základní principy správy secrets pro AL-Go for GitHub, nikoli na technické novinky v AL, AI agenty nebo aktuální trendy.
+1.  **Verdikt:** ANO.
+2.  *   **Zvýšená nestabilita BC Docker kontejnerů:** Detekován nárůst selhání při generování Docker kontejnerů pro Business Central napříč heterogenními hostitelskými OS, což přímo ovlivňuje AL development prostředí.
+    *   **Proaktivní diagnostika:** Probíhá deep-dive analýza chybových reportů (GitHub) a telemetrických dat k identifikaci root cause těchto selhání, což indikuje proaktivní přístup k řešení kritických infrastrukturních vývojových problémů.
+    *   **Komunitní řešení resilience:** Zapojení partnerské sítě do testování a sběru dat pro zvýšení odolnosti (resilience) procesu tvorby BC Docker prostředí, klíčového pro AL CI/CD a lokální vývoj.
 
 <!--více-->
 
-2.  *   **AL-Go for GitHub Secret Management:** Článek popisuje metody ukládání externích citlivých dat (secrets) nezbytných pro správnou funkci AL-Go for GitHub CI/CD pipeline pro Business Central AL projekty. Nejedná se o "secrets" uvnitř AL-Go, nýbrž o externí konfigurace (např. tokeny pro Deployment Service, licencování, atd.).
-    *   **Standardní DevOps Integrace:** Zdůrazňuje potřebu implementace bezpečných secret management strategií (např. GitHub Secrets, Azure Key Vault) v rámci každého DevOps setupu využívajícího AL-Go, což je kritické pro automatizaci deploymentu a testování AL aplikací.
-    *   **Žádné Novinky v AL/AI/Trendy:** Text z května 2022 se netýká vývoje v AL jazyce, runtime prostředí, integrace AI agentů ani obecných technologických trendů v Business Central, ale poskytuje best practice pro zabezpečení a konfiguraci stávajících AL-Go workflow.
-
-[Číst celý článek](https://freddysblog.com/2022/05/14/secrets-in-al-go-for-github/)
+[Číst celý článek](https://freddysblog.com/2022/05/10/resilience/)
