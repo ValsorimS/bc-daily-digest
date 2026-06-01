@@ -43,59 +43,84 @@ processed = get_processed_links()
 with open('sources.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
-# 2. Zpracování
-count = 0
-MAX_PER_RUN = 1 
-
+# 2. Sestavení kandidátů ze všech zdrojů
+# Cíl: projít napřed nejnovější článek z KAŽDÉHO zdroje (po jednom),
+# pak druhé nejnovější z každého zdroje atd. Když mezi běhy vznikne
+# novější příspěvek, dostane přednost, protože se ve feedu objeví na
+# pozici 0 (a tedy přeskočí starší články ostatních zdrojů).
+candidates = []
 for blog in data.get('blogs', []):
     feed = feedparser.parse(blog['url'])
-    
-    for entry in feed.entries:
-        if count >= MAX_PER_RUN:
+
+    for index, entry in enumerate(feed.entries):
+        if entry.link in processed:
+            continue
+
+        # Čas publikace pro řazení nejnovějších v rámci stejné pozice
+        published = entry.get('published_parsed') or entry.get('updated_parsed')
+        published_ts = time.mktime(published) if published else 0.0
+
+        candidates.append({
+            'feed_index': index,
+            'published_ts': published_ts,
+            'blog': blog,
+            'entry': entry,
+        })
+
+# Řazení: napřed podle pozice ve feedu (0 = nejnovější v daném zdroji),
+# při shodě podle data publikace (nejnovější první).
+candidates.sort(key=lambda c: (c['feed_index'], -c['published_ts']))
+
+# 3. Zpracování
+count = 0
+MAX_PER_RUN = 1
+
+for cand in candidates:
+    if count >= MAX_PER_RUN:
+        break
+
+    blog = cand['blog']
+    entry = cand['entry']
+    print(f"Zpracovávám: {entry.title}")
+
+    try:
+        # Sumarizace s ošetřením 429
+        summary_text = summarize(entry.summary).strip()
+
+        # Oddělovač excerptu vkládáme deterministicky v kódu,
+        # protože model ho generuje nespolehlivě. Na úvodní stránce
+        # se tak zobrazí pouze verdikt (první odstavec).
+        summary_text = summary_text.replace("<!--více-->", "").strip()
+        parts = summary_text.split("\n\n", 1)
+        verdict = parts[0].strip()
+        rest = parts[1].strip() if len(parts) > 1 else ""
+
+        # Verdikt = excerpt (úvodní stránka), zbytek + odkaz až za oddělovačem
+        content = f"{verdict}\n\n<!--více-->\n"
+        if rest:
+            content += f"\n{rest}\n"
+        content += f"\n[Číst celý článek]({entry.link})"
+
+        os.makedirs("_posts", exist_ok=True)
+        date_str = datetime.now().strftime("%Y-%m-%d")
+        filename = f"_posts/{date_str}-{blog['name'].replace(' ', '-').lower()}-{count}.md"
+
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{content}")
+
+        processed[entry.link] = datetime.now().isoformat()
+        save_processed_links(processed)
+        count += 1
+
+        # Exponenciální pauza pro prevenci 429 (začíná na 60s)
+        time.sleep(65)
+
+    except ClientError as e:
+        if hasattr(e, 'code') and e.code == 429:
+            print("Kvóta vyčerpána (429). Čekám na reset a končím.")
+            # Ukončíme běh, kvóta je vyčerpaná
             break
-            
-        if entry.link not in processed:
-            print(f"Zpracovávám: {entry.title}")
-            
-            try:
-                # Sumarizace s ošetřením 429
-                summary_text = summarize(entry.summary).strip()
-
-                # Oddělovač excerptu vkládáme deterministicky v kódu,
-                # protože model ho generuje nespolehlivě. Na úvodní stránce
-                # se tak zobrazí pouze verdikt (první odstavec).
-                summary_text = summary_text.replace("<!--více-->", "").strip()
-                parts = summary_text.split("\n\n", 1)
-                verdict = parts[0].strip()
-                rest = parts[1].strip() if len(parts) > 1 else ""
-
-                # Verdikt = excerpt (úvodní stránka), zbytek + odkaz až za oddělovačem
-                content = f"{verdict}\n\n<!--více-->\n"
-                if rest:
-                    content += f"\n{rest}\n"
-                content += f"\n[Číst celý článek]({entry.link})"
-
-                os.makedirs("_posts", exist_ok=True)
-                date_str = datetime.now().strftime("%Y-%m-%d")
-                filename = f"_posts/{date_str}-{blog['name'].replace(' ', '-').lower()}-{count}.md"
-                
-                with open(filename, "w", encoding="utf-8") as f:
-                    f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{content}")
-                
-                processed[entry.link] = datetime.now().isoformat()
-                save_processed_links(processed)
-                count += 1
-                
-                # Exponenciální pauza pro prevenci 429 (začíná na 60s)
-                time.sleep(65) 
-                
-            except ClientError as e:
-                if hasattr(e, 'code') and e.code == 429:
-                    print("Kvóta vyčerpána (429). Čekám na reset a končím.")
-                    # Zde neprovádíme break, který by ukončil celý skript, 
-                    # jen vyskočíme z aktuálního článku
-                    break 
-                else:
-                    raise e
+        else:
+            raise e
 
 print("Hotovo. Zpracováno nových článků:", count)
