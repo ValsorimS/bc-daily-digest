@@ -6,6 +6,8 @@ published: true
 
 1.  **Verdikt:** NE. Tento úryvek textu popisuje řešení problému z roku 2022 týkající se Azure DevOps pipeline a kontejnerů, což pro zkušeného BC vývojáře hledajícího aktuální *novinky* v AL, AI agentech či trendy *není* relevantní.
 
+<!--více-->
+
 2.  **Technické shrnutí:**
     *   Řeší dřívější problémy (před 2022) s nestabilitou Azure DevOps build pipeline, zejména při spouštění více DevOps agentů na stejném hostiteli využívajícím kontejnery s procesní izolací.
     *   Zmiňuje "major improvement" v mechanismu invokace skriptů uvnitř těchto kontejnerů, což naznačuje optimalizaci runtime prostředí pro vykonávání build steps.
