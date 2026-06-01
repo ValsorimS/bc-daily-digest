@@ -1,0 +1,34 @@
+name: Navrhnout zdroj
+description: Navrhni nový blog nebo YouTube kanál do BC Daily Digest
+title: "[Zdroj]: "
+labels: ["navrhnout-zdroj"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Děkujeme za návrh zdroje! Vyplň URL a typ. Po otevření issue se
+        automaticky vytvoří pull request přidávající zdroj do `sources.json`.
+  - type: input
+    id: url
+    attributes:
+      label: URL zdroje
+      description: Odkaz na blog (homepage nebo přímo RSS/Atom feed) nebo YouTube kanál.
+      placeholder: https://nejakyblog.cz
+    validations:
+      required: true
+  - type: dropdown
+    id: type
+    attributes:
+      label: Typ zdroje
+      options:
+        - Blog (RSS/Atom)
+        - YouTube kanál
+    validations:
+      required: true
+  - type: input
+    id: name
+    attributes:
+      label: Název (nepovinné)
+      description: Když necháš prázdné, vezme se z titulku feedu.
+    validations:
+      required: false
