@@ -27,7 +27,6 @@ def summarize(text):
         "Shrň technické novinky pro zkušeného BC vývojáře. Zaměř se na AL, AI agenty a trendy. "
         "Analizuj text a napiš výstup v tomto formátu:\n"
         "1. První odstavec: Verdikt (ANO/NE) - shrň jednou větou, jestli má smysl článek číst.\n"
-        "\n\n<!--více-->\n\n"
         "2. Následuje technické shrnutí ve 3 odrážkách (co je nového, technické detaily).\n"
         "Piš v češtině, buď extrémně technický a stručný.\n\n"
         f"Text k analýze: {text[:3000]}"
@@ -60,11 +59,21 @@ for blog in data.get('blogs', []):
             
             try:
                 # Sumarizace s ošetřením 429
-                summary_text = summarize(entry.summary)
-                
-                # Zápis proběhne POUZE pokud summarize() projde
-                content = f"{summary_text}\n\n[Číst celý článek]({entry.link})"
-                # final_content = content.replace("\n\n", "\n\n<!--více-->\n\n", 1)
+                summary_text = summarize(entry.summary).strip()
+
+                # Oddělovač excerptu vkládáme deterministicky v kódu,
+                # protože model ho generuje nespolehlivě. Na úvodní stránce
+                # se tak zobrazí pouze verdikt (první odstavec).
+                summary_text = summary_text.replace("<!--více-->", "").strip()
+                parts = summary_text.split("\n\n", 1)
+                verdict = parts[0].strip()
+                rest = parts[1].strip() if len(parts) > 1 else ""
+
+                # Verdikt = excerpt (úvodní stránka), zbytek + odkaz až za oddělovačem
+                content = f"{verdict}\n\n<!--více-->\n"
+                if rest:
+                    content += f"\n{rest}\n"
+                content += f"\n[Číst celý článek]({entry.link})"
 
                 os.makedirs("_posts", exist_ok=True)
                 date_str = datetime.now().strftime("%Y-%m-%d")
