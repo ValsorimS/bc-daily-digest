@@ -5,7 +5,7 @@ import time
 from datetime import datetime
 
 from google import genai
-from google.genai.errors import ClientError
+from google.genai.errors import ClientError, ServerError
 
 # Konfigurace
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
@@ -31,12 +31,24 @@ def summarize(text):
         "Piš v češtině, buď extrémně technický a stručný.\n\n"
         f"Text k analýze: {text[:3000]}"
     )
-    response = client.models.generate_content(
-        model='gemini-flash-latest',
-        # Vrátit: model='gemini-2.5-flash',
-        contents=prompt
-    )
-    return response.text
+    # Model bývá občas dočasně přetížený (503 UNAVAILABLE / 5xx).
+    # Zkusíme to několikrát s narůstající pauzou, než to vzdáme.
+    max_attempts = 5
+    for attempt in range(1, max_attempts + 1):
+        try:
+            response = client.models.generate_content(
+                model='gemini-flash-latest',
+                # Vrátit: model='gemini-2.5-flash',
+                contents=prompt
+            )
+            return response.text
+        except ServerError as e:
+            if attempt == max_attempts:
+                raise
+            wait = 20 * attempt
+            print(f"Model přetížen (kód {getattr(e, 'code', '?')}). "
+                  f"Pokus {attempt}/{max_attempts} selhal, čekám {wait}s a zkouším znovu.")
+            time.sleep(wait)
 
 # 1. Načtení historie a zdrojů
 processed = get_processed_links()
@@ -114,6 +126,14 @@ for cand in candidates:
 
         # Exponenciální pauza pro prevenci 429 (začíná na 60s)
         time.sleep(65)
+
+    except ServerError as e:
+        # Model je nedostupný i po opakovaných pokusech. Článek
+        # neoznačíme jako zpracovaný a zkusíme ho při příštím běhu –
+        # běh ukončíme čistě, ať workflow nehlásí chybu.
+        print(f"Model nedostupný (kód {getattr(e, 'code', '?')}) i po opakování. "
+              f"Končím, zkusím při příštím běhu.")
+        break
 
     except ClientError as e:
         if hasattr(e, 'code') and e.code == 429:
