@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title and page.url != "/" %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="site-header__brand" href="{{ '/' | relative_url }}">
+        <span class="site-header__logo">BC</span>
+        <span class="site-header__titles">
+          <span class="site-header__title">{{ site.title }}</span>
+          <span class="site-header__subtitle">Novinky ze světa Business Central &amp; AL</span>
+        </span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container site-main">
+    {{ content }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>{{ site.title }} — automatický přehled novinek, sumarizováno AI.</p>
+    </div>
+  </footer>
+</body>
+</html>
