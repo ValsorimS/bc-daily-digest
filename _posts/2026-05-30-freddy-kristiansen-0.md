@@ -2,6 +2,7 @@
 layout: post
 title: "Freddy Kristiansen: Preview of future AL-Go for GitHub functionality"
 published: true
+original_date: 2022-05-02
 ---
 
 1.  **Verdikt:** NE. Článek z května 2022 informuje o preview verzi AL-Go for GitHub, která je již delší dobu stabilní a široce adoptovanou součástí moderního AL CI/CD stacku.

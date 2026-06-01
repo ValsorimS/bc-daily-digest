@@ -102,10 +102,13 @@ for blog in data.get('blogs', []):
         # Čas publikace pro řazení nejnovějších v rámci stejné pozice
         published = entry.get('published_parsed') or entry.get('updated_parsed')
         published_ts = time.mktime(published) if published else 0.0
+        # Datum původního článku (jen pro zobrazení), prázdné když chybí
+        original_date = time.strftime("%Y-%m-%d", published) if published else ""
 
         candidates.append({
             'feed_index': index,
             'published_ts': published_ts,
+            'original_date': original_date,
             'blog': blog,
             'entry': entry,
         })
@@ -124,6 +127,7 @@ for cand in candidates:
 
     blog = cand['blog']
     entry = cand['entry']
+    original_date = cand['original_date']
     print(f"Zpracovávám: {entry.title}")
 
     try:
@@ -132,9 +136,12 @@ for cand in candidates:
 
         # Oddělovač excerptu vkládáme deterministicky v kódu,
         # protože model ho generuje nespolehlivě. Na úvodní stránce
-        # se tak zobrazí pouze verdikt (první odstavec).
+        # se tak zobrazí pouze verdikt (první řádek). Dělíme na prvním
+        # zalomení řádku, ne na prázdném řádku – model občas mezi verdikt
+        # a shrnutí prázdný řádek nevloží a pak by se do excerptu dostalo
+        # celé shrnutí.
         summary_text = summary_text.replace("<!--více-->", "").strip()
-        parts = summary_text.split("\n\n", 1)
+        parts = summary_text.split("\n", 1)
         verdict = parts[0].strip()
         rest = parts[1].strip() if len(parts) > 1 else ""
 
@@ -148,8 +155,19 @@ for cand in candidates:
         date_str = datetime.now().strftime("%Y-%m-%d")
         filename = f"_posts/{date_str}-{blog['name'].replace(' ', '-').lower()}-{count}.md"
 
+        front_matter = (
+            "---\n"
+            "layout: post\n"
+            f"title: \"{blog['name']}: {entry.title}\"\n"
+            "published: true\n"
+        )
+        # Datum původního článku pro zobrazení vedle data zpracování
+        if original_date:
+            front_matter += f"original_date: {original_date}\n"
+        front_matter += "---\n\n"
+
         with open(filename, "w", encoding="utf-8") as f:
-            f.write(f"---\nlayout: post\ntitle: \"{blog['name']}: {entry.title}\"\npublished: true\n---\n\n{content}")
+            f.write(front_matter + content)
 
         processed[entry.link] = datetime.now().isoformat()
         save_processed_links(processed)
