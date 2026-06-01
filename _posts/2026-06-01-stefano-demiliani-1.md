@@ -5,7 +5,7 @@ published: true
 original_date: 2026-06-01
 ---
 
-1.  **Verdikt:** ANO – Článek je relevantní pro zkušené AL vývojáře zajímající se o integraci a konfiguraci AI funkcionalit v Business Central.
+**Verdikt:** ANO – Článek je relevantní pro zkušené AL vývojáře zajímající se o integraci a konfiguraci AI funkcionalit v Business Central.
 
 <!--více-->
 

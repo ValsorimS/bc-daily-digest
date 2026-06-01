@@ -1,6 +1,7 @@
 import json
 import feedparser
 import os
+import re
 import time
 from datetime import datetime
 
@@ -143,6 +144,11 @@ for cand in candidates:
         summary_text = summary_text.replace("<!--více-->", "").strip()
         parts = summary_text.split("\n", 1)
         verdict = parts[0].strip()
+        # Odstraníme vedoucí číslování verdiktu (např. "1.  "), jinak by se
+        # excerpt na úvodní stránce vykreslil jako číslovaný seznam.
+        # Shrnutí (rest) je za <!--více-->, není v excerptu a "2." tam drží
+        # odsazení vnořených odrážek, proto ho necháváme být.
+        verdict = re.sub(r'^\s*\d+[.)]\s*', '', verdict)
         rest = parts[1].strip() if len(parts) > 1 else ""
 
         # Verdikt = excerpt (úvodní stránka), zbytek + odkaz až za oddělovačem

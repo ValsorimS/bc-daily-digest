@@ -5,7 +5,7 @@ published: true
 original_date: 2026-06-03
 ---
 
-1.  **Verdikt**: NE – článek se týká pouze obecných aktualizací Visual Studio Code, nikoli specifických novinek v MS Dynamics 365 Business Central, AL, AI agentech nebo souvisejících trendech.
+**Verdikt**: NE – článek se týká pouze obecných aktualizací Visual Studio Code, nikoli specifických novinek v MS Dynamics 365 Business Central, AL, AI agentech nebo souvisejících trendech.
 
 <!--více-->
 

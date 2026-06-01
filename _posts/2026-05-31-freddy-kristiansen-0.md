@@ -5,7 +5,7 @@ published: true
 original_date: 2022-05-19
 ---
 
-1.  **Verdikt:** NE. Tento úryvek textu popisuje řešení problému z roku 2022 týkající se Azure DevOps pipeline a kontejnerů, což pro zkušeného BC vývojáře hledajícího aktuální *novinky* v AL, AI agentech či trendy *není* relevantní.
+**Verdikt:** NE. Tento úryvek textu popisuje řešení problému z roku 2022 týkající se Azure DevOps pipeline a kontejnerů, což pro zkušeného BC vývojáře hledajícího aktuální *novinky* v AL, AI agentech či trendy *není* relevantní.
 
 <!--více-->
 
