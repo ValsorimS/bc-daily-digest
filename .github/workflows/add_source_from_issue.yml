@@ -2,7 +2,8 @@ name: Add source from issue
 
 on:
   issues:
-    types: [opened]
+    # opened: nové issue z formuláře; labeled: schválení/dozpracování přidáním labelu
+    types: [opened, labeled]
 
 permissions:
   contents: write
@@ -85,13 +86,20 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           RESULT: ${{ steps.add.outputs.result }}
         run: |
+          BRANCH="add-source/issue-${ISSUE_NUMBER}"
+          # Pojistka proti dvojímu běhu (opened i labeled): když branch už
+          # existuje, PR byl nejspíš založen dřív – nic nedělej.
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            echo "Branch $BRANCH už existuje – přeskakuji."
+            exit 0
+          fi
+
           if [ -z "$(git status --porcelain sources.json)" ]; then
             COMMENT=$(printf 'Zdroj nebyl přidán:\n\n```\n%s\n```\n\nPravděpodobně už v `sources.json` existuje.' "$RESULT")
             gh issue comment "$ISSUE_NUMBER" --body "$COMMENT"
             exit 0
           fi
 
-          BRANCH="add-source/issue-${ISSUE_NUMBER}"
           git config user.name "github-actions"
           git config user.email "action@github.com"
           git checkout -b "$BRANCH"
