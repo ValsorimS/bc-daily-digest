@@ -8,7 +8,7 @@ title: BC Daily Digest
 {% for post in site.posts %}
   <article>
     <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-    <p>{{ post.date | date: "%d. %m. %Y" }}</p>
+    <p>Zpracováno {{ post.date | date: "%d. %m. %Y" }}{% if post.original_date %} · původní článek z {{ post.original_date | date: "%d. %m. %Y" }}{% endif %}</p>
     
     <div class="excerpt">
       {{ post.excerpt }}
