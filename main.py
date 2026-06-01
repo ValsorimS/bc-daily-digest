@@ -11,6 +11,15 @@ from google.genai.errors import ClientError, ServerError
 client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 HISTORY_FILE = "history.json"
 
+# Modely od preferovaného po záložní. Když je některý dočasně nedostupný
+# (503) nebo neexistuje (404), zkusí se další v pořadí.
+MODELS = [
+    "gemini-flash-latest",
+    "gemini-2.5-flash",
+    "gemini-2.0-flash",
+    "gemini-flash-lite-latest",
+]
+
 def get_processed_links():
     if os.path.exists(HISTORY_FILE):
         with open(HISTORY_FILE, "r", encoding="utf-8") as f:
@@ -31,24 +40,46 @@ def summarize(text):
         "Piš v češtině, buď extrémně technický a stručný.\n\n"
         f"Text k analýze: {text[:3000]}"
     )
-    # Model bývá občas dočasně přetížený (503 UNAVAILABLE / 5xx).
-    # Zkusíme to několikrát s narůstající pauzou, než to vzdáme.
-    max_attempts = 5
-    for attempt in range(1, max_attempts + 1):
-        try:
-            response = client.models.generate_content(
-                model='gemini-flash-latest',
-                # Vrátit: model='gemini-2.5-flash',
-                contents=prompt
-            )
-            return response.text
-        except ServerError as e:
-            if attempt == max_attempts:
-                raise
-            wait = 20 * attempt
-            print(f"Model přetížen (kód {getattr(e, 'code', '?')}). "
-                  f"Pokus {attempt}/{max_attempts} selhal, čekám {wait}s a zkouším znovu.")
-            time.sleep(wait)
+    # Modely zkoušíme v pořadí podle MODELS. U každého pár pokusů
+    # s krátkým backoffem na dočasné přetížení (503); když model nezabere,
+    # přejdeme na další. 429 (vyčerpaná kvóta) propustíme ven – je účtová,
+    # takže jiný model nepomůže a běh se ukončí čistě výš.
+    attempts_per_model = 2
+    last_error = None
+    for model in MODELS:
+        for attempt in range(1, attempts_per_model + 1):
+            try:
+                response = client.models.generate_content(
+                    model=model,
+                    contents=prompt
+                )
+                if model != MODELS[0]:
+                    print(f"Použit záložní model: {model}")
+                return response.text
+            except ServerError as e:
+                last_error = e
+                if attempt == attempts_per_model:
+                    print(f"Model {model} nedostupný (kód {getattr(e, 'code', '?')}) "
+                          f"po {attempts_per_model} pokusech, zkouším další model.")
+                    break
+                wait = 15 * attempt
+                print(f"Model {model} přetížen (kód {getattr(e, 'code', '?')}). "
+                      f"Pokus {attempt}/{attempts_per_model}, čekám {wait}s.")
+                time.sleep(wait)
+            except ClientError as e:
+                # 429 = vyčerpaná kvóta → fallback nepomůže, propustíme ven.
+                if getattr(e, 'code', None) == 429:
+                    raise
+                # Jinak (404/400 – neplatný/nedostupný model) zkusíme další.
+                last_error = e
+                print(f"Model {model} odmítnut (kód {getattr(e, 'code', '?')}), "
+                      f"zkouším další model.")
+                break
+
+    # Žádný model neuspěl – předáme poslední chybu k ošetření výš.
+    if last_error is not None:
+        raise last_error
+    raise RuntimeError("Sumarizace selhala: žádný model není dostupný.")
 
 # 1. Načtení historie a zdrojů
 processed = get_processed_links()
