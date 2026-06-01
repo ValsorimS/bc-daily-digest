@@ -32,8 +32,8 @@ def summarize(text):
         f"Text k analýze: {text[:3000]}"
     )
     response = client.models.generate_content(
-        # Vrátit: model='gemini-flash-latest',
-        model='gemini-2.5-flash',
+        model='gemini-flash-latest',
+        # Vrátit: model='gemini-2.5-flash',
         contents=prompt
     )
     return response.text
