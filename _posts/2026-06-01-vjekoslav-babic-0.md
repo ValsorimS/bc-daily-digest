@@ -5,7 +5,7 @@ published: true
 original_date: 2026-05-28
 ---
 
-NE. Článek neobsahuje žádné technické novinky relevantní pro BC vývojáře, AL ani AI agenty.
+**Verdikt:** NE. Článek neobsahuje žádné technické novinky relevantní pro BC vývojáře, AL ani AI agenty.
 
 <!--více-->
 

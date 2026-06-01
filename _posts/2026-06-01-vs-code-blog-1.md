@@ -5,7 +5,7 @@ published: true
 original_date: 2026-05-28
 ---
 
-1. **Verdikt: ANO.** Pro AL vývojáře je nezbytné sledovat aktualizace VS Code, protože přímo ovlivňují výkon AL Language extension, efektivitu GitHub Copilot (AI) při psaní kódu a stabilitu ladění (debuggingu) Business Central sandboxů.
+**Verdikt: ANO.** Pro AL vývojáře je nezbytné sledovat aktualizace VS Code, protože přímo ovlivňují výkon AL Language extension, efektivitu GitHub Copilot (AI) při psaní kódu a stabilitu ladění (debuggingu) Business Central sandboxů.
 
 <!--více-->
 

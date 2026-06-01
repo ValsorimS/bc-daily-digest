@@ -5,7 +5,7 @@ published: true
 original_date: 2026-05-21
 ---
 
-1.  **Verdikt:** ANO.
+**Verdikt:** ANO.
 
 <!--více-->
 
