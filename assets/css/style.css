@@ -1,0 +1,193 @@
+/* BC Daily Digest – vzhled inspirovaný Business Central / Fluent Design */
+
+:root {
+  --bc-navy: #0f2a43;
+  --bc-navy-2: #15395c;
+  --bc-blue: #0067b8;
+  --bc-blue-hover: #004e8c;
+  --bg: #f3f2f1;
+  --card: #ffffff;
+  --text: #201f1e;
+  --text-muted: #605e5c;
+  --border: #edebe9;
+  --ano-bg: #dff6dd;
+  --ano-fg: #0b6a0b;
+  --ne-bg: #fde7e9;
+  --ne-fg: #a4262c;
+  --shadow: 0 1.6px 3.6px rgba(0, 0, 0, .13), 0 .3px .9px rgba(0, 0, 0, .11);
+  --shadow-hover: 0 3.2px 7.2px rgba(0, 0, 0, .13), 0 .6px 1.8px rgba(0, 0, 0, .11);
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* --- Hlavička (BC navy) --- */
+.site-header {
+  background: var(--bc-navy);
+  border-bottom: 3px solid var(--bc-blue);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  padding-top: .85rem;
+  padding-bottom: .85rem;
+}
+
+.site-header__brand {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  text-decoration: none;
+  color: #fff;
+}
+
+.site-header__logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: var(--bc-blue);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  letter-spacing: .02em;
+}
+
+.site-header__titles { display: flex; flex-direction: column; line-height: 1.2; }
+.site-header__title { font-size: 1.2rem; font-weight: 700; }
+.site-header__subtitle { font-size: .82rem; color: #c7d6e5; }
+
+/* --- Obsah --- */
+.site-main { padding: 1.75rem 1.25rem 2.5rem; }
+
+.site-main > h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--bc-navy);
+  margin: 0 0 1.25rem;
+}
+
+.site-main h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--bc-navy);
+  margin: 1.75rem 0 .85rem;
+  padding-bottom: .35rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* --- Karty článků --- */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1.1rem;
+  transition: box-shadow .15s ease;
+}
+
+.post-card:hover { box-shadow: var(--shadow-hover); }
+
+.post-card__title { font-size: 1.12rem; margin: 0 0 .35rem; line-height: 1.35; }
+.post-card__title a { color: var(--bc-navy); text-decoration: none; }
+.post-card__title a:hover { color: var(--bc-blue); text-decoration: underline; }
+
+.post-card__meta,
+.post__meta {
+  font-size: .82rem;
+  color: var(--text-muted);
+  margin: 0 0 .6rem;
+}
+
+.excerpt { color: var(--text); }
+.excerpt p { margin: .3rem 0; }
+
+.post-card__more {
+  display: inline-block;
+  margin-top: .5rem;
+  font-weight: 600;
+  font-size: .9rem;
+  color: var(--bc-blue);
+  text-decoration: none;
+}
+.post-card__more:hover { color: var(--bc-blue-hover); text-decoration: underline; }
+
+/* --- Odznak verdiktu --- */
+.verdict {
+  display: inline-block;
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  padding: .12em .65em;
+  border-radius: 999px;
+  vertical-align: middle;
+  margin-left: .35rem;
+}
+.verdict--ano { background: var(--ano-bg); color: var(--ano-fg); }
+.verdict--ne { background: var(--ne-bg); color: var(--ne-fg); }
+
+/* --- Archiv (details) --- */
+details.archive {
+  margin-top: .5rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fbfbfa;
+  overflow: hidden;
+}
+details.archive > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: .75rem 1.2rem;
+  font-weight: 700;
+  color: var(--bc-navy);
+  user-select: none;
+}
+details.archive > summary::-webkit-details-marker { display: none; }
+details.archive > summary::before { content: "▸ "; color: var(--bc-blue); }
+details.archive[open] > summary::before { content: "▾ "; }
+details.archive > summary:hover { background: #f3f2f1; }
+details.archive .card { margin: .9rem 1.1rem; }
+
+/* --- Detail článku --- */
+.post__title { font-size: 1.55rem; color: var(--bc-navy); margin: 0 0 .35rem; line-height: 1.3; }
+.post__content { margin-top: .75rem; }
+.post__content a { color: var(--bc-blue); }
+.post__content ul { padding-left: 1.25rem; }
+.post__back { margin-top: 1.5rem; }
+.post__back a { color: var(--bc-blue); text-decoration: none; font-weight: 600; }
+.post__back a:hover { text-decoration: underline; }
+
+/* --- Patička --- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  background: #fff;
+  color: var(--text-muted);
+  font-size: .8rem;
+  padding: 1.25rem 0;
+  margin-top: 2rem;
+}
+
+/* --- Responzivita --- */
+@media (max-width: 520px) {
+  .site-header__subtitle { display: none; }
+  .site-main > h1 { font-size: 1.3rem; }
+}

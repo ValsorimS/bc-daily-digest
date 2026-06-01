@@ -26,11 +26,11 @@ vykreslil jako blok kódu místo HTML.
 {%- endif -%}
 {%- if is_new -%}
 {%- assign found_new = true %}
-<article>
-<h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-<p>Zpracováno {{ post.date | date: "%d. %m. %Y" }}{% if post.original_date %} · původní článek z {{ post.original_date | date: "%d. %m. %Y" }}{% endif %}</p>
+<article class="card post-card">
+<h2 class="post-card__title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+<p class="post-card__meta">Zpracováno {{ post.date | date: "%d. %m. %Y" }}{% if post.original_date %} · původní článek z {{ post.original_date | date: "%d. %m. %Y" }}{% endif %} {% include verdict-badge.html post=post %}</p>
 <div class="excerpt">{{ post.excerpt }}</div>
-<a href="{{ site.baseurl }}{{ post.url }}">Číst dále...</a>
+<a class="post-card__more" href="{{ site.baseurl }}{{ post.url }}">Číst dále →</a>
 </article>
 {% endif -%}
 {% endfor -%}
@@ -45,11 +45,11 @@ vykreslil jako blok kódu místo HTML.
 {%- if ots >= cutoff_ts %}{% assign is_new = true %}{% endif -%}
 {%- endif -%}
 {%- unless is_new %}
-<article>
-<h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-<p>Zpracováno {{ post.date | date: "%d. %m. %Y" }}{% if post.original_date %} · původní článek z {{ post.original_date | date: "%d. %m. %Y" }}{% endif %}</p>
+<article class="card post-card">
+<h2 class="post-card__title"><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
+<p class="post-card__meta">Zpracováno {{ post.date | date: "%d. %m. %Y" }}{% if post.original_date %} · původní článek z {{ post.original_date | date: "%d. %m. %Y" }}{% endif %} {% include verdict-badge.html post=post %}</p>
 <div class="excerpt">{{ post.excerpt }}</div>
-<a href="{{ site.baseurl }}{{ post.url }}">Číst dále...</a>
+<a class="post-card__more" href="{{ site.baseurl }}{{ post.url }}">Číst dále →</a>
 </article>
 {% endunless -%}
 {% endfor %}

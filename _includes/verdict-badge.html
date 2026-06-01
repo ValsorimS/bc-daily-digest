@@ -1,0 +1,6 @@
+{%- assign _v = include.post.excerpt | strip_html | upcase -%}
+{%- if _v contains 'VERDIKT: ANO' or _v contains 'VERDIKT ANO' -%}
+<span class="verdict verdict--ano">ANO</span>
+{%- elsif _v contains 'VERDIKT: NE' or _v contains 'VERDIKT NE' -%}
+<span class="verdict verdict--ne">NE</span>
+{%- endif -%}
