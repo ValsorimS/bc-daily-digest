@@ -116,7 +116,7 @@ candidates.sort(key=lambda c: (c['feed_index'], -c['published_ts']))
 
 # 3. Zpracování
 count = 0
-MAX_PER_RUN = 1
+MAX_PER_RUN = 3
 
 for cand in candidates:
     if count >= MAX_PER_RUN:
