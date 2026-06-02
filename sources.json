@@ -23,6 +23,10 @@
     {
       "name": "Waldo",
       "url": "https://waldo.be/feed/"
+    },
+    {
+      "name": "lifehacks365",
+      "url": "https://lifehacks365.com/feed/"
     }
   ],
   "youtube": [
