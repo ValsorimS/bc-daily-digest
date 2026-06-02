@@ -23,6 +23,10 @@
     {
       "name": "Waldo",
       "url": "https://waldo.be/feed/"
+    },
+    {
+      "name": "Yzhums",
+      "url": "https://yzhums.com/feed/"
     }
   ],
   "youtube": [
