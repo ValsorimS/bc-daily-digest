@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Produktový blog BC: Enable accelerated growth with confidence: A Forrester TEI study projects more than 200% ROI over three years and six-month payback using Dynamics 365 Business Central"
+title: "Produktový blog BC: 2026 release wave 1 plans for Microsoft Dynamics 365, Microsoft Power Platform, and Copilot Studio offerings"
 published: true
-original_date: 2026-03-31
+original_date: 2026-03-18
 ---
 
-Verdikt: NE – Článek se zaměřuje výhradně na finanční návratnost investice (ROI) do Business Central a neobsahuje žádné technické informace pro AL vývojáře.
+Verdikt: NE – Text je pouze stručným marketingovým oznámením o vydání plánů pro 2026 wave 1 a neobsahuje žádné konkrétní technické detaily ani AL kód.
 
 <!--více-->
 
-*   Analyzovaný text pojednává o studii Forrester Consulting hodnotící potenciální ROI implementace Dynamics 365 Business Central, nikoliv o technických aspektech platformy.
-*   V předloženém obsahu nejsou uvedeny žádné novinky týkající se vývoje v AL, rozhraní API, kompilátoru, nebo nových funkcionalit pro zkušené AL vývojáře.
-*   Článek neobsahuje zmínky o AI agentech, integraci generativní AI do Business Central (např. Copilot v kontextu vývoje), ani o aktuálních architektonických či vývojových trendech v ekosystému D365BC.
+- Oznámená roadmapa "2026 release wave 1" se zaměřuje na hlubší konvergenci Dynamics 365, Power Platform a Copilot Studio pro sjednocení business logiky na úrovni platformy.
+- Hlavním trendem je přechod k autonomním, na rolích založeným AI agentům (Role-based agents) v M365 Copilot, což pro BC vývojáře znamená nutnost návrhu robustních API a integračních kontraktů.
+- Architektura se posouvá od izolovaného AL vývoje k orchestraci služeb, kde AL kód funguje jako backend (funkční prompty, custom akce a API stránky) pro agenty konfigurované v Copilot Studio.
 
-[Číst celý článek](https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2026/03/31/enable-accelerated-growth-with-confidence-a-forrester-tei-study-projects-more-than-200-roi-over-three-years-and-six-month-payback-using-dynamics-365-business-central/)
+[Číst celý článek](https://www.microsoft.com/en-us/dynamics-365/blog/business-leader/2026/03/18/2026-release-wave-1-plans-for-microsoft-dynamics-365-microsoft-power-platform-and-copilot-studio-offerings/)
