@@ -23,6 +23,10 @@
     {
       "name": "Waldo",
       "url": "https://waldo.be/feed/"
+    },
+    {
+      "name": "Steveendow",
+      "url": "https://blog.steveendow.com/feeds/posts/default?alt=rss"
     }
   ],
   "youtube": [
