@@ -27,6 +27,18 @@
     {
       "name": "Yzhums",
       "url": "https://yzhums.com/feed/"
+    },
+    {
+      "name": "Steveendow",
+      "url": "https://blog.steveendow.com/feeds/posts/default?alt=rss"
+    },
+    {
+      "name": "kristenhosman",
+      "url": "https://www.kristenhosman.com/feeds/posts/default?alt=rss"
+    },
+    {
+      "name": "lifehacks365",
+      "url": "https://lifehacks365.com/feed/"
     }
   ],
   "youtube": [
