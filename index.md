@@ -2,9 +2,6 @@
 layout: home
 title: BC Daily Digest
 ---
-
-# Přehled novinek ze světa programování v AL
-
 {%- comment -%}
 Řadíme podle data PUBLIKACE článku (original_date) sestupně – nejnovější
 obsah nahoře. Hranice "nového" článku: původní článek z posledních 30 dní
