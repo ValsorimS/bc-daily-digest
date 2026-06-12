@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Tech Sphere Dynamics: Agents Changed the Game: The End of Flat AI Pricing"
+title: "Tech Sphere Dynamics: The Invisible Curve: When AI Subscriptions Stop Adding Up"
 published: true
-original_date: 2026-04-28
+original_date: 2026-04-22
 ---
 
-Verdikt: ANO – Text upozorňuje na kritický a rychlý přechod od fixně placených AI asistentů k autonomním agentům s platbou za reálnou spotřebu, což zásadně mění způsob integrace AI do ERP a AL vývoje.
+Verdikt: NE – Text pouze obecně popisuje konec flat-rate předplatných u AI vendorů (Anthropic, GitHub, SAP) bez jakéhokoliv konkrétního dopadu na AL vývoj nebo nové featury v Business Central.
 
 <!--více-->
 
-- Dochází k paradigmatickému posunu od reaktivních AI chatů k proaktivním autonomním agentům (např. GitHub Copilot Workspace, Anthropic Tool Use), kteří dokážou samostatně plánovat, generovat AL kód a spouštět CI/CD pipelines.
-- Flat-rate předplatné modelů je nahrazováno transakčním modelem (consumption-based) na základě spotřeby tokenů, což vyžaduje optimalizaci AI volání přímo v aplikační logice Business Centralu.
-- Pro AL vývojáře vzniká nutnost navrhovat stávající Business Central API a vnitřní procedury tak, aby fungovaly jako deklarativní "nástroje" (Tool Calling) pro LLM agenty, kteří je budou autonomně řetězit a spouštět.
+- Posun AI vendorů od flat-rate k token-based/consumption modelům indikuje nutnost optimalizace AL integrací (HttpClient volání na Azure OpenAI/Anthropic APIs) s důrazem na minimalizaci tokenů a precizní context window management.
+- Architektura Copilot integrací v BC se musí adaptovat na asynchronní zpracování a lokální validaci dat přímo v AL před odesláním payloadu, aby se zamezilo redundantním a nákladným API dotazům.
+- Trend směřuje k orchestraci autonomních AI agentů mimo BC sandbox (např. přes Azure platformu), přičemž AL bude sloužit primárně jako transakční vrstva poskytující strukturovaná data přes OData/API a exekuční endpoint pro callbacky.
 
-[Číst celý článek](https://techspheredynamics.com/2026/04/28/agents-changed-the-game-the-end-of-flat-ai-pricing/)
+[Číst celý článek](https://techspheredynamics.com/2026/04/22/the-invisible-curve-when-ai-subscriptions-stop-adding-up/)

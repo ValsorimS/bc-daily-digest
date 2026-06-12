@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Tech Sphere Dynamics: BC-Bench (II): How to get started"
+title: "Tech Sphere Dynamics: Reminders in v28: What’s Changing and Why It Matters"
 published: true
-original_date: 2026-04-23
+original_date: 2026-04-17
 ---
 
-Verdikt: ANO – Tento text představuje nezbytný základ pro nastavení BC-Bench, což je klíčový benchmarkovací framework pro vývoj, testování a validaci AI agentů v Business Central.
+Verdikt: NE – Text je zaměřen primárně na funkční konzultanty a postrádá hlubší technický rozbor AL kódu, vývojářských API či slibovaných AI agentů.
 
 <!--více-->
 
-- Představení open-source frameworku BC-Bench (pod MIT licencí) určeného pro exekuci, testování a exaktní komparativní vyhodnocování výkonu autonomních AI agentů integrovaných do ekosystému Business Central.
-- Architektura vyžaduje pro plnohodnotné simulační prostředí Windows Server VM, přičemž framework podporuje vývoj vlastních agentů (Agent Coding) a definici custom profilů pro specifické business scénáře.
-- Proces evaluace se zaměřuje na automatizované porovnávání výsledků, interpretaci telemetrie, detekci anomálií a eliminaci kritických úskalí při interakci AI s AL aplikační logikou.
+- Kompletní přepracování modulu upomínek (v28) s plnou automatizací eskalačních workflow, novým nastavením komunikačních textů a nativní podporou vícejazyčnosti (multilingual capabilities).
+- Povinný přechod na nové prodejní ceny (Sales Pricing Experience), což pro vývojáře znamená definitivní konec starého modelu cenotvorby a nutnost refaktorizace AL kódu využívajícího staré tabulky a triggery.
+- Globální vynucení funkce automatického ukládání (autosave) na pozadí, což mění chování klientských sezení a provádění databázových operací v reálném čase.
 
-[Číst celý článek](https://techspheredynamics.com/2026/04/23/bc-bench-ii-how-to-get-started/)
+[Číst celý článek](https://techspheredynamics.com/2026/04/17/reminders-in-v28-whats-changing-and-why-it-matters/)
