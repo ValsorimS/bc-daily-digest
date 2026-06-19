@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: Use your own language model key in VS Code"
+title: "VS Code Blog: What 50,000 Runs of a 5-Line Eval Taught Us"
 published: true
-original_date: 2026-06-18
+original_date: 2026-06-19
 ---
 
-Verdikt: NE – Článek popisuje funkci VS Code pro integraci AI modelů pro vývojářské nástroje, nikoli nové technické možnosti pro AL, AI agenty v Business Central nebo runtime platformě.
+Verdikt: ANO – Článek odkrývá kritická data z 50 000 exekucí kódovacích LLM přímo v prostředí VS Code, což je klíčové pro efektivní integraci AI agentů a optimalizaci tokenových nákladů při vývoji v AL.
 
 <!--více-->
 
-*   VS Code nově podporuje mechanismus "Bring Your Own Key" (BYOK) pro integrování a správu Large Language Models (LLM) přímo v rámci vývojového prostředí.
-*   Tato funkcionalita umožňuje připojení k široké škále AI poskytovatelů (Azure, Anthropic, Gemini, OpenAI, Huggingface, OpenRouter) a lokálním modelům (Ollama, Foundry Local) s vlastními API klíči, což personalizuje AI asistenci pro vývojáře.
-*   Z pohledu AL a MS Dynamics 365 Business Central tato novinka nepředstavuje rozšíření AL jazyka, nové API pro volání AI modelů z AL kódu v runtime, ani platformní podporu pro vestavěné AI agenty přímo v Business Central aplikacích. Jedná se o vylepšení vývojářského toolingu ve VS Code, nikoli o nové možnosti pro vývoj Business Central řešení.
+* Analýza chování LLM při reálném vývoji ve VS Code ukazuje, jak modely dynamicky škálují výpočetní úsilí (effort), spotřebu tokenů a volání nástrojů (tool use) i u banálních syntaktických úprav, což přímo ovlivňuje návrh AL Copilot agentů.
+* Data poskytují vodítko pro optimální selekci modelů (např. volbu mezi reasoning modely a menšími rychlými modely) pro specifické AL úlohy, jako je generování boilerplate kódu, AL test suite nebo refaktorování tabulkových extenzí.
+* Pochopení korelace mezi složitostí promptu, kontextovým oknem a reálným využitím VS Code API (tool calling) umožňuje AL vývojářům lépe designovat vlastní custom agenty a minimalizovat finanční náklady na tokeny při automatické migraci kódu.
 
-[Číst celý článek](https://code.visualstudio.com/blogs/2026/06/18/byok-vscode)
+[Číst celý článek](https://code.visualstudio.com/blogs/2026/06/19/what-50000-runs-taught-us)
