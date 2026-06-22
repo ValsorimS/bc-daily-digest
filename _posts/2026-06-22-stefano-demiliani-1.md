@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Stefano Demiliani: Azure Functions: never share the same storage account between function apps."
+title: "Stefano Demiliani: Dynamics 365 Business Central: understanding the Database Wait Statistics page."
 published: true
-original_date: 2026-02-03
+original_date: 2026-01-28
 ---
 
-Verdikt: ANO – Článek popisuje kritické riziko sdílení jednoho Storage Accountu mezi více Azure Function Apps, což fatálně ovlivňuje spolehlivost externích integrací Business Central.
+Verdikt: ANO – Článek detailně rozebírá novou diagnostickou stránku "Database Wait Statistics" v Business Central, která je zásadní pro analýzu SQL bottlenecků přímo z prostředí BC.
 
 <!--více-->
 
-* Sdílení nastavení `AzureWebJobsStorage` způsobuje kolize Host ID (generovaných z názvu aplikace a zkrácených na 32 znaků) a konflikt v distribuovaném zamykání přes Blob leases, což vede k selhání Timer a Queue triggerů.
-* V BC architektuře (např. při offloadování AL procesů přes HttpClient nebo při integraci AI agentů běžících jako microservices) toto sdílení způsobuje náhodné mizení zpráv ve frontách, duplicitní spouštění nebo tiché zablokování webhooků.
-* Správným řešením je striktní izolace – každá Function App musí mít v bicep/ARM šablonách pro CI/CD definovaný vlastní unikátní Storage Account pro `AzureWebJobsStorage` i `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING`.
+- Zavedení nové systémové stránky a virtuální tabulky "Database Wait Statistics" v BC, která zpřístupňuje nízkoúrovňové výkonové metriky SQL Serveru (wait stats) bez nutnosti přímého přístupu k databázové instanci.
+- Možnost diagnostiky specifických typů čekání (např. transakční zámky LCK_M_*, diskové operace PAGEIOLATCH či CPU prostředky CXPACKET) pro přesnou identifikaci úzkých hrdel způsobených neefektivním AL kódem.
+- Schopnost resetovat kumulované statistiky přímo z UI a korelovat naměřené hodnoty s telemetrickými signály v Azure Application Insights (KQL) pro pokročilý performance tuning a optimalizaci indexů.
 
-[Číst celý článek](https://demiliani.com/2026/02/03/azure-functions-never-share-the-same-storage-account-between-function-apps/)
+[Číst celý článek](https://demiliani.com/2026/01/28/dynamics-365-business-central-understanding-the-database-wait-statistics-page/)
