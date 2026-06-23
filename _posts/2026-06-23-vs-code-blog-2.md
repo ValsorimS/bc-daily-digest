@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: Making agents practical for real-world development"
+title: "VS Code Blog: February 2026 (version 1.110)"
 published: true
-original_date: 2026-03-05
+original_date: 2026-03-04
 ---
 
-Verdikt: ANO – Článek poskytuje klíčový technický vhled do nové architektury AI agentů ve VS Code v1.110, což je zásadní pro integraci vlastních LLM nástrojů a automatizaci vývojových workflows v AL.
+Verdikt: NE – Článek se týká pouze aktualizací Visual Studio Code a neobsahuje žádné technické novinky relevantní pro MS Dynamics 365 Business Central, AL, AI agenty nebo související trendy.
 
 <!--více-->
 
-- VS Code v1.110 zavádí pokročilou orchestraci agentů s podporou pro lifecycle hooks a session memory, což umožňuje AI asistentům udržovat stav a hluboký kontext napříč vývojářskými relacemi v AL workspace.
-- Nový model extensibility definuje koncept "agent skills" a integruje browser tools, což otevírá cestu pro tvorbu specializovaných nástrojů schopných autonomně manipulovat s kódem a spouštět lokální procesy.
-- Pro AL vývojáře tyto novinky představují možnost budovat agenty s porozuměním Business Central metadatům, kteří mohou přes definovaná API přímo spouštět kompilaci (AL compiler), analyzovat app.json/launch.json, spouštět linter nebo generovat AL testy s využitím historického kontextu projektu.
+*   Článek oznamuje vydání Visual Studio Code verze 1.110, únorové edice pro rok 2026, bez dalších specifikací obsahu aktualizace.
+*   Poskytnutý textový fragment neobsahuje žádné technické detaily ohledně nových funkcionalit, API změn, vylepšení debugování či výkonu v rámci samotného VS Code.
+*   Informace týkající se Microsoft Dynamics 365 Business Central, jazyka AL, integrace AI agentů do BC vývoje, nebo širších technologických trendů relevantních pro BC komunitu, v předloženém textu zcela chybí.
 
-[Číst celý článek](https://code.visualstudio.com/blogs/2026/03/05/making-agents-practical-for-real-world-development)
+[Číst celý článek](https://code.visualstudio.com/updates/v1_110)

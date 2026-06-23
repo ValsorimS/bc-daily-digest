@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "kristenhosman: Financial report: balance sheet row definition in Dynamics 365 Business Central"
+title: "kristenhosman: User Email View Policies in Dynamics 365 Business Central"
 published: true
-original_date: 2024-10-03
+original_date: 2024-10-01
 ---
 
-Verdikt: NE – Text popisuje pouze triviální uživatelské nastavení řádků finančních výkazů v klientském rozhraní a neobsahuje žádný AL kód, technické novinky ani zmínky o AI.
+Verdikt: NE – článek se zabývá pouze základní konfigurací oprávnění pro zobrazení odeslaných e-mailů v Business Central, což pro zkušeného AL vývojáře nepřináší žádné technické novinky z oblasti AL, AI agentů ani obecných trendů.
 
 <!--více-->
 
-- Článek detailně rozebírá pouze manuální konfiguraci "Row Definitions" (definice řádků) ve standardním modulu Financial Reporting navázanou na strukturu účtové osnovy.
-- Chybí jakýkoliv technický přesah do vývoje v AL, úpravy schémat reportů přes kód, práce s tabulkami `Acc. Schedule Name` / `Acc. Schedule Line` nebo využití systémových API.
-- Téma zcela ignoruje moderní trendy, jako je integrace s Copilotem pro generování finančních analýz nebo využití AI agentů pro automatické mapování účtů.
+*   Článek popisuje konfiguraci "User Email View Policies" pro řízení viditelnosti odeslaných e-mailů v Business Central, což je standardní funkční nastavení přístupové politiky.
+*   Dostupné politiky pro zobrazení e-mailů zahrnují "View own emails", "View all emails", "View if access to all related records" a "View if access to any related records", s možností definice pro konkrétní uživatele (User ID).
+*   Text neobsahuje žádné technické detaily týkající se AL kódu, nových prvků jazyka, nástrojů pro vývoj, integrace AI agentů, mechanismů machine learningu ani strategických směrů vývoje platformy Business Central.
 
-[Číst celý článek](https://www.kristenhosman.com/2024/10/financial-report-balance-sheet-row.html)
+[Číst celý článek](https://www.kristenhosman.com/2024/10/user-email-view-policies-in-dynamics.html)
