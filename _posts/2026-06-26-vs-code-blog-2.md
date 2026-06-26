@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: Your Home for Multi-Agent Development"
+title: "VS Code Blog: Iterating faster with TypeScript 7"
 published: true
-original_date: 2026-02-05
+original_date: 2026-06-26
 ---
 
-Verdikt: ANO – Přináší klíčový pohled na integraci multi-agentních AI systémů přímo do VS Code, což zásadně ovlivní budoucí workflows a automatizaci vývoje v AL.
+Verdikt: NE – Článek se zaměřuje výhradně na interní optimalizaci VS Code a adopci TypeScriptu 7, což nemá přímý vliv na vývoj v AL nebo Business Central.
 
 <!--více-->
 
-- VS Code zavádí jednotné rozhraní pro orchestraci lokálních, backgroundových a cloudových AI agentů (včetně Claude a Codex) běžících paralelně vedle GitHub Copilot.
-- Podpora otevřených standardů jako MCP (Model Context Protocol) a Agent Skills umožňuje vývojářům bezpečně propojit agenty s lokálními AL nástroji, kompilátorem alc.exe a schématy Business Central.
-- Multi-agentní vývoj umožňuje delegovat komplexní úkoly, jako je migrace kódu ze starších verzí C/AL na AL, automatické generování testů (AL-Go) nebo refaktorování kódu podle Best Practices, přímo na autonomní AI agenty.
+- Úzká kooperace týmů VS Code a TypeScript na integraci TypeScriptu 7 za účelem zrychlení vývojového cyklu a odezvy editoru.
+- Technické úpravy zahrnují optimalizaci typového systému, snížení režie kompilátoru při inkrementálních sestaveních a efektivnější garbage collection v procesech na pozadí.
+- Pro AL vývojáře se změny projeví pouze nepřímo v celkovém výkonu VS Code jako hostitelského IDE, článek však neobsahuje žádné novinky týkající se AL kompilátoru, Copilota ani AI agentů pro BC.
 
-[Číst celý článek](https://code.visualstudio.com/blogs/2026/02/05/multi-agent-development)
+[Číst celý článek](https://code.visualstudio.com/blogs/2026/06/26/iterating-faster-with-ts-7)
