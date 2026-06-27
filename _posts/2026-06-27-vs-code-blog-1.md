@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: January 2026 (version 1.109)"
+title: "VS Code Blog: Introducing the VS Code Insiders Podcast"
 published: true
-original_date: 2026-02-04
+original_date: 2025-12-03
 ---
 
-Verdikt: NE – Článek se týká výhradně obecného vydání Visual Studio Code a neposkytuje žádné informace specifické pro AL, Business Central ani AI agenty.
+Verdikt: NE – Článek pouze oznamuje spuštění nového podcastu o obecném vývoji platformy VS Code a neobsahuje žádné specifické informace o AL, Business Central nebo dedikovaných AI agentech pro BC.
 
 <!--více-->
 
-*   **Co je nového:** Článek oznamuje vydání Visual Studio Code verze 1.109 z ledna 2026.
-*   **Technické detaily k AL/BC/AI:** Poskytnutý text neobsahuje žádné technické detaily ani zmínky týkající se programovacího jazyka AL, runtime prostředí Microsoft Dynamics 365 Business Central, žádné nové AL kompilátorové featury, vylepšení AL language serveru, ani integrace či implementace AI agentů v kontextu BC.
-*   **Trendy:** Text neodhaluje žádné trendy v oblasti AL vývoje, využití AI kopilotů v rámci Business Central platformy, ani nové architektonické či vývojové směry pro D365BC ekosystém. Fokus je čistě na obecná vylepšení IDE.
+- Spuštění kanálu VS Code Insiders Podcast zaměřeného na zákulisní rozhodnutí, roadmapu a architektonický vývoj jádra editoru Visual Studio Code.
+- Témata se soustředí na core platformu VS Code, nikoliv na specifické doménové extenze typu AL Language nebo Dynamics 365 BC vývojové nástroje.
+- Relevanci pro AL vývojáře lze spatřovat pouze v obecném sledování trendů VS Code Extension API a integrace GitHub Copilot/AI na úrovni editoru, které mohou sekundárně ovlivnit AL vývojové prostředí.
 
-[Číst celý článek](https://code.visualstudio.com/updates/v1_109)
+[Číst celý článek](https://code.visualstudio.com/blogs/2025/12/03/introducing-vs-code-insiders-podcast)

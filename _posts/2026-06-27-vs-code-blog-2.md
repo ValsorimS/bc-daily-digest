@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: Building docfind: Fast Client-Side Search with Rust and WebAssembly"
+title: "VS Code Blog: Introducing the Visual Studio Code Private Marketplace: Your Team's Secure, Curated Extension Hub 🎉"
 published: true
-original_date: 2026-01-15
+original_date: 2025-11-18
 ---
 
-Verdikt: NE – Článek se netýká vývoje v AL ani platformy Business Central, nýbrž vývoje VS Code extenze pro offline vyhledávání v dokumentaci.
+Verdikt: ANO – Přináší zásadní novinku pro governance vývojového prostředí v enterprise týmech spravujících vlastní AL utility a interní tooling.
 
 <!--více-->
 
-- Implementace klientského vyhledávače "docfind" postaveného na kombinaci Rustu a WebAssembly (Wasm), což umožňuje extrémně rychlé fulltextové vyhledávání přímo v sandboxu klienta bez nutnosti serverových volání.
-- Využití GitHub Copilot jako AI programátora pro generování optimálního Rust kódu, psaní unit testů a zrychlení integrace s VS Code API.
-- Architektonický posun k přesouvání indexační a vyhledávací logiky na stranu klienta, což představuje inspiraci pro náročné výpočty v rámci Business Central Control Add-ins běžících v browseru.
+- GA verze Private Marketplace pro VS Code umožňuje organizacím centralizovaně spravovat, schvalovat a interně distribuovat proprietární i veřejná VS Code rozšíření.
+- Řízení přístupu a konfigurace využívá integraci s Microsoft Entra ID, což administrátorům umožňuje definovat striktní politiky povolených (allowlist) a zakázaných rozšíření pro vývojové týmy.
+- Pro BC/AL vývojáře to znamená možnost bezpečné distribuce interních nástrojů (custom AL code analyzers, firemní snippet packs, specifické lintery) bez rizika úniku duševního vlastnictví na veřejný VS Code Marketplace.
 
-[Číst celý článek](https://code.visualstudio.com/blogs/2026/01/15/docfind)
+[Číst celý článek](https://code.visualstudio.com/blogs/2025/11/18/PrivateMarketplace)

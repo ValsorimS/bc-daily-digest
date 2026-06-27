@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Stefano Demiliani: Dynamics 365 Business Central UI performance: what about the browser and the local machine?"
+title: "Stefano Demiliani: My MCP server for Dynamics 365 Business Central Administration now supports handling PTEs."
 published: true
-original_date: 2025-12-29
+original_date: 2025-12-10
 ---
 
-Verdikt: NE – článek se primárně zaměřuje na UI výkon klienta a nepokrývá novinky v AL, AI agentech ani širší technologické trendy relevantní pro vývojáře.
+Verdikt: ANO – Článek představuje integraci správy Per-Tenant Extensions (PTE) do MCP serveru, což umožňuje AI agentům autonomně spravovat a nasazovat AL rozšíření v Business Central.
 
 <!--více-->
 
-*   Text neobsahuje informace o nových AL language featurách, typech, syntaxi, ani o toolingových inovacích specifických pro AL vývoj. Důraz je kladen na optimalizaci runtime výkonu uživatelského rozhraní na straně klienta.
-*   Technické detaily článku se soustředí na ovlivnění UI odezvy ze strany webového prohlížeče (renderovací engine, JavaScript VM performance) a lokálních hardwarových zdrojů (CPU, RAM) koncového uživatele. Nejsou zde detailovány principy AI modelů, integrace s Azure AI službami, ani specifické AL API pro práci s AI agenty.
-*   Z hlediska trendů text zmiňuje obecnou snahu o zlepšení klientské user experience, avšak neprezentuje nové vývojové paradigmy v AL, strategické posuny v Microsoft Cloud aplikacích pro Business Central (např. low-code/no-code s AI) ani nové způsoby využití AI agentů v rámci BC ekosystému.
+- Nová verze vlastního MCP (Model Context Protocol) serveru pro BC Administration zavádí přímou podporu pro správu Per-Tenant Extensions (PTE) pomocí AI agentů.
+- Technické rozhraní umožňuje LLM prostřednictvím standardizovaných MCP nástrojů (tools) provádět upload, deployment a monitoring stavu instalace AL aplikací v cloudových prostředích přes Business Central Admin API.
+- Tento krok definuje nový trend AIOps v ekosystému Dynamics 365, kde lze rutinní deployment a operativní správu tenantů plně delegovat na autonomní AI agenty.
 
-[Číst celý článek](https://demiliani.com/2025/12/29/dynamics-365-business-central-ui-performance-what-about-the-browser-and-the-local-machine/)
+[Číst celý článek](https://demiliani.com/2025/12/10/my-mcp-server-for-dynamics-365-business-central-administration-now-supports-handling-ptes/)
