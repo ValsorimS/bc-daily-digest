@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: Expanding Model Choice in VS Code with Bring Your Own Key"
+title: "VS Code Blog: Introducing auto model selection (preview)"
 published: true
-original_date: 2025-10-22
+original_date: 2025-09-15
 ---
 
-Verdikt: ANO – Článek je relevantní, neboť popisuje základní API ve VS Code, které ovlivňuje budoucí integraci AI agentů a chatovacích zkušeností do vývojového prostředí pro AL.
+Verdikt: NE – Článek se věnuje obecné optimalizaci AI modelů ve VS Code a nijak nesouvisí se specifickým vývojem v AL nebo architekturou Business Central.
 
 <!--více-->
 
-*   VS Code představuje nové `Language Model Chat Provider API`, určené pro integraci a správu jazykových modelů (LLM) přímo v rámci IDE, což rozšiřuje možnosti pro AI asistované programování.
-*   API umožňuje zvýšenou flexibilitu a extenzibilitu pro chatovací rozhraní, čímž developeri získávají možnost volby a konfigurace různých modelů pro generování kódu, refaktoring nebo dokumentaci, s potenciálem pro specifické AL kontexty.
-*   Zaveden je mechanismus `Bring Your Own Key` (BYOK), který umožňuje vývojářům využívat vlastní klíče pro přístup k preferovaným LLM poskytovatelům, čímž získávají kontrolu nad daty, náklady a volbou konkrétních AI služeb.
+* Integrace funkce dynamické selekce LLM (auto model selection) ve VS Code, která automaticky volí optimální model podle složitosti promptu (např. při refaktorování AL kódu).
+* Snížení latence odpovědí a minimalizace rizika narážení na API limity (rate limiting) díky efektivnějšímu směrování dotazů na menší/rychlejší modely.
+* Finanční optimalizace pro platící uživatele v podobě 10% slevy na prémiové dotazy při využití tohoto automatického režimu v IDE.
 
-[Číst celý článek](https://code.visualstudio.com/blogs/2025/10/22/bring-your-own-key)
+[Číst celý článek](https://code.visualstudio.com/blogs/2025/09/15/autoModelSelection)
