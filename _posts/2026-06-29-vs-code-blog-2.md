@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: The Complete MCP Experience: Full Specification Support in VS Code"
+title: "VS Code Blog: VS Code: Open Source AI Editor"
 published: true
-original_date: 2025-06-12
+original_date: 2025-05-19
 ---
 
-Verdikt: ANO – Článek je podstatný pro AL vývojáře, kteří vnímají potenciál AI-asistované tvorby kódu, jelikož popisuje hlubší integraci generativních AI modelů do jejich primárního IDE.
+Verdikt: ANO – Článek shrnuje významný posun v nástrojích a trendech AI, které přímo ovlivňují vývoj v AL v rámci VS Code.
 
 <!--více-->
 
-*   VS Code nyní plně implementuje specifikaci Model Context Protocol (MCP), což představuje fundamentální vrstvu pro nativní a standardizovanou integraci generativních AI modelů a agentů v rámci vývojového prostředí.
-*   Zásadními pilíři této podpory jsou autorizace, umožňující bezpečný a řízený přístup k AI službám; robustní zpracování promptů pro efektivní komunikaci s modely; správa zdrojů pro optimalizaci výkonu a nákladů; a techniky vzorkování pro kontrolu generovaného výstupu.
-*   Pro AL developery tato rozšířená podpora MCP ve VS Code otevírá cestu k pokročilým nástrojům pro automatické generování, refaktoring a analýzu AL kódu s využitím AI, ačkoliv přímé AL-specifické AI agenty je stále potřeba na této platformě vybudovat.
+*   Open-sourcing GitHub Copilot Chat extension pro VS Code představuje zásadní krok k vytvoření "open source AI editoru". Pro AL vývojáře to znamená potenciál pro komunitní rozšíření a customizaci AI asistentů specificky pro AL jazyk, Business Central API a doménovou logiku, optimalizující tak AI asistenci přímo v AL vývojovém prostředí.
+*   Tento trend akceleruje integraci modifikovatelných AI agentů do IDE. AL vývojáři mohou očekávat budoucí nástroje umožňující vytváření nebo adaptaci AI agentů pro AL-specifické úkoly, jako je generování standardních BC objektů, refaktoring AL kódu či pomoc s migrací funkcionalit, což vede k vyšší efektivitě a konzistenci kódu.
+*   Technicky, open-sourcing umožňuje hlubší integraci a extendabilitu Copilot Chatu. Poskytuje základ pro AL-specific prompt engineering a potenciální fine-tuning jazykových modelů pro lepší pochopení AL sémantiky a konvencí, čímž otevírá cestu pro komunitní příspěvky k optimalizaci AI asistencí pro běžné Business Central development patterns.
 
-[Číst celý článek](https://code.visualstudio.com/blogs/2025/06/12/full-mcp-spec-support)
+[Číst celý článek](https://code.visualstudio.com/blogs/2025/05/19/openSourceAIEditor)

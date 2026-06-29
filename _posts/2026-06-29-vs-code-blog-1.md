@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: Open Source AI Editor: First Milestone"
+title: "VS Code Blog: Enhance productivity with AI + Remote Dev"
 published: true
-original_date: 2025-06-30
+original_date: 2025-05-27
 ---
 
-Verdikt: ANO – Týká se budoucího ekosystému AI nástrojů pro AL vývoj v rámci VS Code.
+Verdikt: NE – Zadaný text neobsahuje žádné technické novinky relevantní pro AL, Business Central nebo konkrétní AI agenty či trendy v kontextu BC vývoje.
 
 <!--více-->
 
-*   GitHub Copilot Chat extension pro VS Code, klíčový komponent pro AI asistenci v IDE, byl open-sourcován.
-*   Toto otevírá cestu pro hlubší customizaci a komunitní rozšíření AI agentů pro AL vývoj, umožňující specifické adaptace na AL syntaxi, datové modely BC a objektovou strukturu.
-*   Trend směřuje k plně "open source AI editoru" ve VS Code, což předznamenává robustnější, modulární a flexibilnější AI agenty schopné generovat, analyzovat a optimalizovat AL kód s hlubším kontextuálním pochopením Business Central specifik.
+*   Nezmiňuje žádné konkrétní novinky týkající se AL jazyka, kompilátoru, runtime, ani BC platformy.
+*   Neobsahuje technické detaily o integraci AI s AL nástroji (např. Copilot pro AL, prediktivní kódování), ani o vylepšeních pro vzdálený AL vývoj (např. vylepšené dev. kontejnery pro BC).
+*   Hovoří o obecných trendech AI a remote development pro zvýšení produktivity, avšak bez specifikace jejich aplikací, nových funkcionalit nebo release plánů v rámci ekosystému Dynamics 365 Business Central a AL.
 
-[Číst celý článek](https://code.visualstudio.com/blogs/2025/06/30/openSourceAIEditorFirstMilestone)
+[Číst celý článek](https://code.visualstudio.com/blogs/2025/05/27/ai-and-remote)
