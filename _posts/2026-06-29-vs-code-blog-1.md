@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "VS Code Blog: Enhance productivity with AI + Remote Dev"
+title: "VS Code Blog: Beyond the tools, adding MCP in VS Code"
 published: true
-original_date: 2025-05-27
+original_date: 2025-05-14
 ---
 
-Verdikt: NE – Zadaný text neobsahuje žádné technické novinky relevantní pro AL, Business Central nebo konkrétní AI agenty či trendy v kontextu BC vývoje.
+Verdikt: ANO – Článek popisuje integraci Model Context Protocol (MCP) do VS Code agent modu, což AL vývojářům otevírá cestu k tvorbě vlastních AI kopilotů pro automatizaci vývoje a údržby Business Central aplikací.
 
 <!--více-->
 
-*   Nezmiňuje žádné konkrétní novinky týkající se AL jazyka, kompilátoru, runtime, ani BC platformy.
-*   Neobsahuje technické detaily o integraci AI s AL nástroji (např. Copilot pro AL, prediktivní kódování), ani o vylepšeních pro vzdálený AL vývoj (např. vylepšené dev. kontejnery pro BC).
-*   Hovoří o obecných trendech AI a remote development pro zvýšení produktivity, avšak bez specifikace jejich aplikací, nových funkcionalit nebo release plánů v rámci ekosystému Dynamics 365 Business Central a AL.
+- Podpora MCP (Model Context Protocol) ve VS Code Copilot Agent Mode umožňuje LLM autonomně volat lokální i vzdálené nástroje přes standardizované JSON-RPC 2.0 rozhraní přímo v kontextu IDE.
+- Pro AL vývojáře to znamená možnost vytvořit vlastní MCP servery (např. v Node.js/Pythonu) a zpřístupnit AI agentovi AL compiler (alc.exe), AL parser, volání Business Central API, správu Docker kontejnerů přes PowerShell nebo analýzu telemetrie.
+- AI agent dokáže v tomto režimu samostatně řešit komplexní tasky, jako je refaktorizace kódu podle BC standardů, generování integračních API stránek, oprava chyb na základě výstupu z kompilátoru nebo automatické psaní AL testů s využitím lokálních nástrojů.
 
-[Číst celý článek](https://code.visualstudio.com/blogs/2025/05/27/ai-and-remote)
+[Číst celý článek](https://code.visualstudio.com/blogs/2025/05/12/agent-mode-meets-mcp)
