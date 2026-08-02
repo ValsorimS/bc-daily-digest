@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Vjekoslav Babic: A Story About Trust: Why LS Retail Moved from Private Endpoints to the Hosted Ninja Backend"
+title: "Vjekoslav Babic: End of free backend for AL Object ID Ninja"
 published: true
-original_date: 2025-12-03
+original_date: 2025-11-09
 ---
 
-Verdikt: NE – Text neobsahuje žádné technické novinky z oblasti AL kódování, AI agentů ani nových funkcí v Business Central, jde pouze o úvod k případové studii.
+Verdikt: NE – Text je pouze komerčním oznámením o zpoplatnění backendu nástroje AL Object ID Ninja a neobsahuje žádné technické novinky, AI agenty ani architektonické změny v AL.
 
 <!--více-->
 
-- Migrace CI/CD infrastruktury: Přechod ISV partnera (LS Retail) z privátních koncových bodů (private endpoints) na spravovaný, cloudově hostovaný backend vývojového nástroje Ninja.
-- DevOps trendy v BC: Odklon od vlastních self-hosted/hybridních build infrastruktur ke klientsky plně spravovaným SaaS backendům.
-- Technický obsah: Zcela chybí AL kódové ukázky, informace o kompilátoru, nová API, MS Copilot i AI agenti.
+- Vývojový nástroj AL Object ID Ninja mění monetizační model a zavádí placený „Ninja premium backend“ s dočasnou 35% slevou.
+- Dochází k ukončení původního konceptu bezplatné správy ID rozsahů objektů (Object ID assignment) pro vývojáře v Business Central.
+- Změna vyžaduje revizi správy licencí a backendové synchronizace alokace ID čísel v týmovém vývoji a CI/CD kanálech.
 
-[Číst celý článek](https://vjeko.com/2025/12/03/a-story-about-trust-why-one-team-moved-from-private-endpoints-to-the-hosted-ninja-backend/)
+[Číst celý článek](https://vjeko.com/2025/11/09/end-of-free-backend-for-al-object-id-ninja/)

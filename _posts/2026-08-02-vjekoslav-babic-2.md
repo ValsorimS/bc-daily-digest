@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Vjekoslav Babic: AL Object ID Ninja: Self-Hosting vs. Hassle-Free (the data tells a curious story)"
+title: "Vjekoslav Babic: Testing in isolation"
 published: true
-original_date: 2025-11-19
+original_date: 2023-12-09
 ---
 
-Verdikt: NE – Text obsahuje pouze čiště statistická data z nástroje AL Object ID Ninja bez nového technického obsahu, návodů či informací o AI a AL jazyce.
+Verdikt: NE – Text neobsahuje žádné technické novinky pro MS Dynamics 365 Business Central, ale pouze krátký vtip o AL vývojáři.
 
 <!--více-->
 
-- Telemetrie nástroje AL Object ID Ninja za poslední 3 měsíce zaznamenala přidělení číselných ID objektů pro celkově 9 365 AL aplikací.
-- Pouze 297 z těchto aplikací mělo nakonfigurováno použití vlastních (private) endpointů pro správu ID objektů z důvodu bezpečnosti a izolace.
-- Správnou a konzistentní konfiguraci private endpointu napříč všemi vývojáři v týmu mělo nastaveno pouhých 122 aplikací, což poukazuje na častou chybovost při distribuci týmového nastavení VS Code/Ninja backendu.
+- Analýza textu neodhalila žádné aktualizace v AL jazyce, AI agentech, REST API ani změny v runtime prostředí BC.
+- Příběh pouze alegoricky naráží na problematiku psaní neefektivních automatizovaných testů (Codeunit Subtype = Test) a chybějící metodiku v AL Test Frameworku.
+- Zpráva neposkytuje žádná data k CI/CD pipelinám, profilování kódu (AL Profiler) ani optimalizaci výkonu databázových dotazů.
 
-[Číst celý článek](https://vjeko.com/2025/11/19/al-object-id-ninja-self-hosting-vs-hassle-free-the-data-tells-a-curious-story/)
+[Číst celý článek](https://vjeko.com/2023/12/09/testing-in-isolation/)
