@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Vjekoslav Babic: Object IDs, now assignable by VS Code agents (LM tool integration)"
+title: "Vjekoslav Babic: AL Object ID Ninja v3.0 Platform Launching on December 15"
 published: true
-original_date: 2026-01-07
+original_date: 2025-12-08
 ---
 
-Verdikt: ANO – Oznámení představuje významný posun k autonomnímu AI vývoji v AL díky přímé integraci alokátoru ID Ninja 3.1.0 s LLM agenty.
+Verdikt: NE – Text neobsahuje žádné technické novinky, vývojové trendy v AL ani informace o AI agentech, pouze informuje o zájmu o komerční verzi nástroje AL Object ID Ninja.
 
 <!--více-->
 
-- Nástroj Ninja 3.1.0 přináší podporu LLM Tool-Callingu (Function Calling) pro automatizovanou alokaci a commit ID objektů v AL.
-- AI agenti pracující ve VS Code mohou autonomně volat Ninja API jako externí nástroj, čímž odpadá manuální rezervace číselných řad objektů při generování kódu.
-- Vylepšení posouvá využití AI v Business Central od jednoduchého dokončování kódu k plně agentním workflows, kde LLM spravuje i projektová metadata a závislosti.
+- Zpráva se zaměřuje výhradně na průzkum trhu a validaci zájmu vývojářů o komerčně podporovanou verzi nástroje pro správu ID objektů (AL Object ID Ninja).
+- Text zcela postrádá jakékoliv technické detaily, ukázky kódu, architektonické specifikace nebo novinky v ekosystému Business Central a AL.
+- Z hlediska vývoje v AL zmiňovaný nástroj řeší pouze automatickou alokaci a kolize ID objektů v repozitářích, ale předložený text nepřináší žádné nové funkční ani technické parametry.
 
-[Číst celý článek](https://vjeko.com/2026/01/07/object-ids-now-assignable-by-vs-code-agents-lm-tool-integration/)
+[Číst celý článek](https://vjeko.com/2025/12/08/al-object-id-ninja-v3-0-platform-launching-on-december-15/)

@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Vjekoslav Babic: Ninja v3 Is Live — Where We Are and What Comes Next"
+title: "Vjekoslav Babic: A Story About Trust: Why LS Retail Moved from Private Endpoints to the Hosted Ninja Backend"
 published: true
-original_date: 2025-12-15
+original_date: 2025-12-03
 ---
 
-Verdikt: NE – Článek pouze stručně oznamuje nasazení nové verze backendu pro AL Object ID Ninja, aniž by přinášel nové AL funkcionality nebo praktické návody.
+Verdikt: NE – Text neobsahuje žádné technické novinky z oblasti AL kódování, AI agentů ani nových funkcí v Business Central, jde pouze o úvod k případové studii.
 
 <!--více-->
 
-- Produkční nasazení backendu v3 pro komunitní nástroj AL Object ID Ninja využívající zcela nové API endpointy.
-- Přechod infrastruktury na nejnovější podporované Node.js runtime prostředí pro vyšší výkon a bezpečnost.
-- Zajištění stability a spolehlivosti provozu pomocí více než 1 300 automatizovaných testů.
+- Migrace CI/CD infrastruktury: Přechod ISV partnera (LS Retail) z privátních koncových bodů (private endpoints) na spravovaný, cloudově hostovaný backend vývojového nástroje Ninja.
+- DevOps trendy v BC: Odklon od vlastních self-hosted/hybridních build infrastruktur ke klientsky plně spravovaným SaaS backendům.
+- Technický obsah: Zcela chybí AL kódové ukázky, informace o kompilátoru, nová API, MS Copilot i AI agenti.
 
-[Číst celý článek](https://vjeko.com/2025/12/15/ninja-v3-is-live-where-we-are-and-what-comes-next/)
+[Číst celý článek](https://vjeko.com/2025/12/03/a-story-about-trust-why-one-team-moved-from-private-endpoints-to-the-hosted-ninja-backend/)

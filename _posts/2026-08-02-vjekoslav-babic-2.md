@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Vjekoslav Babic: Important announcement for teams maintaining private AL Object ID Ninja backend – get ready for “v3”"
+title: "Vjekoslav Babic: AL Object ID Ninja: Self-Hosting vs. Hassle-Free (the data tells a curious story)"
 published: true
-original_date: 2025-12-12
+original_date: 2025-11-19
 ---
 
-Verdikt: NE – Článek je relevantní pouze pro vývojáře spravující vlastní backend pro AL Object ID Ninja a neobsahuje žádné obecné technické novinky o BC, AL ani AI agentech.
+Verdikt: NE – Text obsahuje pouze čiště statistická data z nástroje AL Object ID Ninja bez nového technického obsahu, návodů či informací o AI a AL jazyce.
 
 <!--více-->
 
-- Vydána verze v3 backendu pro nástroj AL Object ID Ninja, který zajišťuje kolizní správu ID objektů a polí v AL projektu.
-- Aktualizace se týká výhradně vývojových týmů provozujících vlastní (self-hosted) backend infrastrukturu z repozitáře; u cloudové/hosted verze probíhá migrace plně automaticky.
-- Pro zachování funkčnosti synchronizace číselných řad na vlastním prostředí je vyžadován manuální redeploy backendové služby na novou v3 architekturu.
+- Telemetrie nástroje AL Object ID Ninja za poslední 3 měsíce zaznamenala přidělení číselných ID objektů pro celkově 9 365 AL aplikací.
+- Pouze 297 z těchto aplikací mělo nakonfigurováno použití vlastních (private) endpointů pro správu ID objektů z důvodu bezpečnosti a izolace.
+- Správnou a konzistentní konfiguraci private endpointu napříč všemi vývojáři v týmu mělo nastaveno pouhých 122 aplikací, což poukazuje na častou chybovost při distribuci týmového nastavení VS Code/Ninja backendu.
 
-[Číst celý článek](https://vjeko.com/2025/12/12/important-announcement-for-teams-maintaining-private-al-object-id-ninja-backend-get-ready-for-v3/)
+[Číst celý článek](https://vjeko.com/2025/11/19/al-object-id-ninja-self-hosting-vs-hassle-free-the-data-tells-a-curious-story/)
