@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Vjekoslav Babic: AL Object ID Ninja logical ranges overview"
+title: "Vjekoslav Babic: Important Announcement for AL Object ID Ninja"
 published: true
-original_date: 2022-05-06
+original_date: 2021-10-01
 ---
 
-Verdikt: NE – Text neobsahuje žádné technické informace, novinky v AL ani podrobnosti o AI agentech a představuje pouze úvodní společenský pozdrav autora.
+Verdikt: NE – Text neobsahuje žádné technické informace, architekturu ani kódové novinky, ale pouze oznámení o populárnosti rozšíření AL Object ID Ninja.
 
 <!--více-->
 
-- Text neobsahuje žádná technická data, kód v AL ani popis nových funkcí či vlastností platformy MS Dynamics 365 Business Central.
-- Zcela chybí informace týkající se AL runtime, compileru, vývojářských nástrojů (VS Code) nebo architektonických změn.
-- Nebyly uvedeny žádné podrobnosti k integraci AI agentů, architektuře Copilotu, API ani k aktuálním vývojovým trendům v ekosystému.
+- Rozšíření AL Object ID Ninja pro správy objektových ID ve VS Code zaznamenalo vysokou adopci komunitou během tří týdnů od vydání.
+- Text doporučuje instalaci nástroje pro zamezení konfliktů v číselných řadách objektů při týmovém vývoji, neposkytuje však žádné parametry nové verze či changelog.
+- Zcela chybí technické detaily, ukázky kódu, informace o integraci AI agentů i jakékoliv aktualizace AL kompilátoru či runtime.
 
-[Číst celý článek](https://vjeko.com/2022/05/06/al-object-id-ninja-logical-ranges-overview/)
+[Číst celý článek](https://vjeko.com/2021/10/01/important-announcement-for-al-object-id-ninja/)

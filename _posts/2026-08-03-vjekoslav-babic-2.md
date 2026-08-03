@@ -1,16 +1,16 @@
 ---
 layout: post
-title: "Vjekoslav Babic: AL Object ID Ninja Scheduled Maintenance Announcement: October 9 at 19:00 CET"
+title: "Vjekoslav Babic: AL Object ID Ninja v1.2.0 – plus some Azure lessons learned"
 published: true
-original_date: 2021-10-04
+original_date: 2021-09-15
 ---
 
-Verdikt: NE – Text obsahuje pouze zastaralé oznámení o krátké odstávce nástroje AL Object ID Ninja z roku 2021 a nepřináší žádné technické novinky, informace o AI agentech ani nové trendy.
+Verdikt: NE – Článek informuje pouze o vydání minoritní verze AL Object ID Ninja v1.2.0, která nepřináší žádné nové funkční vlastnosti.
 
 <!--více-->
 
-- Plánovaná údržba backendové infrastruktury rozšíření AL Object ID Ninja (stanoveno na 9. října 2021 od 19:00 CET).
-- Očekávaný downtime backendových služeb v délce 30 minut.
-- Nefunkčnost služby pro automatickou alokaci a rezervaci číselných řad objektů (Object ID assignment) v AL projektech po dobu údržby.
+- Vydání verze v1.2.0 nástroje AL Object ID Ninja pro správu číselných řad objektů v AL.
+- Nulový přínos z hlediska nových funkcionalit nebo změn chování při vývoji.
+- Povýšení verze na úrovni 'minor' místo 'patch' z technických důvodů bez reálného dopadu na vývojáře.
 
-[Číst celý článek](https://vjeko.com/2021/10/04/al-object-id-ninja-scheduled-maintenance-announcement-october-9-at-1900-cet/)
+[Číst celý článek](https://vjeko.com/2021/09/15/al-object-id-ninja-v1-2-0-plus-some-azure-lessons-learned/)
